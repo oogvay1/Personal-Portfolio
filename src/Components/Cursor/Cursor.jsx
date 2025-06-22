@@ -26,17 +26,17 @@ function Cursor() {
     const lerp = (x, y, a) => x * (1 - a) + y * a;
 
     const moveCursor = (x, y) => {
-        gsap.set('.cursor', { x, y, xPercent: -50, yPercent: -50 })
+        gsap.set('.cursor', { x, y, xPercent: -50, yPercent: -50, ease: "power4.inOut" })
     }
 
     const animate = () => {
         const { x, y } = delayMouse.current;
 
         delayMouse.current = {
-            x: lerp(x, mouse.current.x, 0.095),
-            y: lerp(y, mouse.current.y, 0.095)
+            x: lerp(x, mouse.current.x, 0.15),
+            y: lerp(y, mouse.current.y, 0.15)
         }
-
+        
         moveCursor(delayMouse.current.x, delayMouse.current.y)
         window.requestAnimationFrame(animate)
     }

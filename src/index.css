@@ -13,6 +13,10 @@ body {
     background-color: #F3F3F3;
 }
 
+html {
+    cursor: none;
+}
+
 .container {
     max-width: 1550px;
     margin: 0 auto;

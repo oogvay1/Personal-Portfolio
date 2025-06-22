@@ -12,7 +12,11 @@ function Header() {
                         </div>
 
                         <div className="header-menu">
-                            
+                            <div className="menu-lines">
+                                <div className="span1 menu"></div>
+                                <div className="span2 menu"></div>
+                                <div className="span3 menu"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
