@@ -11,9 +11,9 @@ function App() {
 
   return (
     <>
-      <Header />
       <Cursor />
       <Spline />
+      <Header />
     </>
   );
 }

@@ -17,6 +17,10 @@ html {
     cursor: none;
 }
 
+a {
+    cursor: none;
+}
+
 .container {
     max-width: 1550px;
     margin: 0 auto;

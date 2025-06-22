@@ -1,6 +1,46 @@
+import { useEffect, useRef } from 'react';
 import './Header.css'
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 function Header() {
+
+    const firstText = useRef(null);
+    const secondText = useRef(null);
+    const slider = useRef(null)
+    let xPercent = 0;
+    let direction = 1;
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        requestAnimationFrame(animation);
+
+        gsap.to(slider.current, {
+            scrollTrigger: {
+                trigger: document.documentElement,
+                start: 0,
+                end: window.innerHeight,
+                scrub: .25,
+                onUpdate: e => direction = e.direction * -1
+            },
+            x: "-.001px"
+        })
+    }, [])
+
+    const animation = () => {
+        if (xPercent <= -100) {
+            xPercent = 0;
+        }
+
+        if (xPercent > 0) {
+            xPercent = -100
+        }
+
+        gsap.set(firstText.current, { xPercent: xPercent })
+        gsap.set(secondText.current, { xPercent: xPercent })
+        xPercent += 0.6 * direction;
+        requestAnimationFrame(animation)
+    }
 
     return (
         <>
@@ -16,6 +56,11 @@ function Header() {
                                 <div className="span1 menu"></div>
                                 <div className="span2 menu"></div>
                                 <div className="span3 menu"></div>
+                            </div>
+
+                            <div ref={slider} className="menu-text">
+                                <pre ref={firstText}>main menu • </pre>
+                                <p ref={secondText}>main menu</p>
                             </div>
                         </div>
                     </div>
