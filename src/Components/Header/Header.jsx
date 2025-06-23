@@ -43,12 +43,6 @@ const Header = forwardRef(function Header(props, ref) {
         requestAnimationFrame(animation)
     }
 
-    
-
-    useEffect(() => {
-        firstText.current.addEventListener('mouseenter', )
-    })
-
     return (
         <>
             <header className="header">
