@@ -2,16 +2,21 @@
     position: fixed;
     width: 100%;
     height: 70px;
-    left: 0;
     top: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
     z-index: 1;
 }
 
 .header-inner {
+    max-width: 1800px;
+    width: 1800px;
     display: flex;
     height: 50px;
     justify-content: space-between;
     align-items: end;
+    margin: 0 auto;
 }
 
 .header-logo h1 {
@@ -32,7 +37,8 @@
     mix-blend-mode: difference;
 }
 
-.menu-lines::after, .menu-lines::before {
+.menu-lines::after,
+.menu-lines::before {
     content: '';
     width: 45px;
     height: 3px;
@@ -58,7 +64,6 @@
 .menu-text p:nth-child(2) {
     width: 100%;
     position: absolute;
-    left: 100%;
 }
 
 .bounds {
@@ -71,4 +76,10 @@
 
 .bounds:hover {
     scale: 2;
+}
+
+@media screen and (max-widht: 1800px) {
+    .header-inner {
+        max-width: 1800px;
+    }
 }
