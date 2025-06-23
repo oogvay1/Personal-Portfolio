@@ -16,13 +16,12 @@
     align-items: end;
 }
 
+.header-logo {
+    width: 180px;
+}
+
 .header-logo h1 {
     font-size: 21px;
-    width: 200px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    perspective: 600px;
 }
 
 .header-menu {
@@ -70,15 +69,15 @@
 }
 
 .bounds {
-    width: 200px;
-    height: 100px;
+    width: 100px;
+    height: 90px;
     left: -60%;
     top: -200%;
     position: absolute;
 }
 
 .bounds:hover {
-    scale: 2;
+    scale: 2.2;
 }
 
 @media screen and (max-widht: 1800px) {
