@@ -1,100 +1,102 @@
-import gsap from 'gsap';
 import './Cursor.css'
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { motion, useMotionValue, useSpring, transform, animate } from 'framer-motion';
 
-function Cursor() {
+export default function Cursor({ sticky }) {
 
-    let cursor = useRef(null);
-    let mouse = useRef({
-        x: 0,
-        y: 0
-    })
+    const [isHovered, setIsHovered] = useState(false);
+    const cursor = useRef(null);
+    const cursorSize = isHovered ? 60 : 21;
 
-    let delayMouse = useRef({
-        x: 0,
-        y: 0
-    })
+    const mouse = {
+        x: useMotionValue(0),
+        y: useMotionValue(0)
+    }
 
-    const ManageCursor = (e) => {
+    const scale = {
+        x: useMotionValue(1),
+        y: useMotionValue(1)
+    }
+
+    const smoothOptions = { damping: 20, stiffness: 300, mass: 0.5 }
+    const smoothMouse = {
+        x: useSpring(mouse.x, smoothOptions),
+        y: useSpring(mouse.y, smoothOptions)
+    }
+
+    const rotate = (distance) => {
+        const angle = Math.atan2(distance.y, distance.x);
+        animate(cursor.current, { rotate: `${angle}rad` }, { duration: 0 })
+    }
+
+    const manageMouseMove = e => {
         const { clientX, clientY } = e;
-        mouse.current = {
-            x: clientX,
-            y: clientY
+        const { left, top, height, width } = sticky.current.getBoundingClientRect();
+
+        const center = { x: left + width / 2, y: top + height / 2 }
+
+        if (isHovered) {
+
+            const distance = { x: clientX - center.x, y: clientY - center.y }
+
+            rotate(distance)
+
+            const absDistance = Math.max(Math.abs(distance.x), Math.abs(distance.y));
+            const newScaleX = transform(absDistance, [0, height / .4], [1, 1.3])
+            const newScaleY = transform(absDistance, [0, width / .4], [1, 0.8])
+            scale.x.set(newScaleX);
+            scale.y.set(newScaleY);
+
+            mouse.x.set((center.x - cursorSize / 2) + (distance.x * 0.1));
+            mouse.y.set((center.y - cursorSize / 2) + (distance.y * 0.1));
+        }
+        else {
+            mouse.x.set(clientX - cursorSize / 2);
+            mouse.y.set(clientY - cursorSize / 2);
         }
     }
 
-    const lerp = (x, y, a) => x * (1 - a) + y * a;
-
-    const moveCursor = (x, y) => {
-        gsap.set('.cursor', { x, y, xPercent: -50, yPercent: -50 })
+    const manageMouseOver = e => {
+        setIsHovered(true)
     }
 
-    const animate = () => {
-        const { x, y } = delayMouse.current;
+    const manageMouseLeave = e => {
+        setIsHovered(false)
+        animate(cursor.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 }, { type: "spring" })
+    }
 
-        delayMouse.current = {
-            x: lerp(x, mouse.current.x, 0.15),
-            y: lerp(y, mouse.current.y, 0.15)
+    useEffect(() => {
+        sticky.current.addEventListener("mouseenter", manageMouseOver)
+        sticky.current.addEventListener("mouseleave", manageMouseLeave)
+        window.addEventListener("mousemove", manageMouseMove);
+        return () => {
+            sticky.current.removeEventListener("mouseenter", manageMouseOver)
+            sticky.current.removeEventListener("mouseleave", manageMouseLeave)
+            window.removeEventListener("mousemove", manageMouseMove)
         }
+    }, [isHovered])
 
-        moveCursor(delayMouse.current.x, delayMouse.current.y)
-        window.requestAnimationFrame(animate)
+    const template = ({ rotate, scaleX, scaleY }) => {
+        return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`
     }
-
-    useEffect(() => {
-        animate();
-        window.addEventListener('mousemove', ManageCursor)
-
-        return () => {
-            window.removeEventListener('mousemove', ManageCursor);
-        };
-    }, [])
-
-    useEffect(() => {
-        const elements = document.querySelectorAll('.menu');
-
-        const scaleUp = () => {
-            gsap.to(cursor.current, {
-                width: 21,
-                height: 21,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-        };
-
-        const scaleDown = () => {
-            gsap.to(cursor.current, {
-                width: 16,
-                height: 16,
-                duration: 0.2,
-                ease: 'power2.out'
-            });
-        };
-
-        window.addEventListener('mousedown', scaleDown);
-        window.addEventListener('mouseup', scaleUp);
-
-        elements.forEach(item => {
-            item.addEventListener('mouseleave', scaleUp);
-            item.addEventListener('mouseenter', scaleDown);
-        });
-
-        return () => {
-            window.removeEventListener('mousedown', scaleDown);
-            window.removeEventListener('mouseup', scaleUp);
-            elements.forEach(item => {
-                item.addEventListener('mouseleave', scaleUp);
-                item.addEventListener('mouseenter', scaleDown);
-            });
-        };
-    }, []);
 
     return (
-        <>
-            <div ref={cursor} className="cursor"></div>
-        </>
-    );
+        <div className="cursorContainer">
+            <motion.div
+                transformTemplate={template}
+                style={{
+                    left: smoothMouse.x,
+                    top: smoothMouse.y,
+                    scaleX: scale.x,
+                    scaleY: scale.y,
+                }}
+                animate={{
+                    width: cursorSize,
+                    height: cursorSize
+                }}
+                className="cursor"
+                ref={cursor}>
+            </motion.div>
+        </div>
+    )
 }
-
-export default Cursor

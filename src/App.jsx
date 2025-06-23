@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import Cursor from "./Components/Cursor/Cursor";
 import Header from "./Components/Header/Header";
 import Spline from './Components/Spline/Spline'
@@ -9,11 +10,13 @@ function App() {
     autoRaf: true,
   });
 
+  const sticky = useRef(null);
+
   return (
     <>
-      <Cursor />
+      <Cursor sticky={sticky} />
       <Spline />
-      <Header />
+      <Header ref={sticky} />
     </>
   );
 }

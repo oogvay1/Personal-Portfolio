@@ -1,9 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import './Header.css'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import Framer from '../Magnetic/Framer';
 
-function Header() {
+const Header = forwardRef(function Header(props, ref) {
 
     const firstText = useRef(null);
     const secondText = useRef(null);
@@ -42,6 +43,12 @@ function Header() {
         requestAnimationFrame(animation)
     }
 
+    
+
+    useEffect(() => {
+        firstText.current.addEventListener('mouseenter', )
+    })
+
     return (
         <>
             <header className="header">
@@ -52,11 +59,11 @@ function Header() {
                         </div>
 
                         <div className="header-menu">
-                            <div className="menu-lines">
-                                <div className="span1 menu"></div>
-                                <div className="span2 menu"></div>
-                                <div className="span3 menu"></div>
-                            </div>
+                            <Framer>
+                                <div ref={ref} className="menu-lines">
+                                    <div className="bounds"></div>
+                                </div>
+                            </Framer>
 
                             <div ref={slider} className="menu-text">
                                 <pre ref={firstText}>main menu • </pre>
@@ -68,6 +75,6 @@ function Header() {
             </header>
         </>
     );
-}
+})
 
 export default Header
