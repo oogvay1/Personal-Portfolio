@@ -18,6 +18,11 @@
 
 .header-logo h1 {
     font-size: 21px;
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    perspective: 600px;
 }
 
 .header-menu {
