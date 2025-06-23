@@ -2,8 +2,10 @@
     position: fixed;
     width: 100%;
     height: 70px;
-    left: 0;
     top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
     z-index: 1;
 }
 
@@ -32,7 +34,8 @@
     mix-blend-mode: difference;
 }
 
-.menu-lines::after, .menu-lines::before {
+.menu-lines::after,
+.menu-lines::before {
     content: '';
     width: 45px;
     height: 3px;
@@ -56,13 +59,13 @@
 }
 
 .menu-text p:nth-child(2) {
+    left: 100%;
     width: 100%;
     position: absolute;
-    left: 100%;
 }
 
 .bounds {
-    width: 100px;
+    width: 200px;
     height: 100px;
     left: -60%;
     top: -200%;
@@ -71,4 +74,10 @@
 
 .bounds:hover {
     scale: 2;
+}
+
+@media screen and (max-widht: 1800px) {
+    .header-inner {
+        max-width: 1800px;
+    }
 }

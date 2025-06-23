@@ -37,10 +37,10 @@ const Header = forwardRef(function Header(props, ref) {
             xPercent = -100
         }
 
-        gsap.set(firstText.current, { xPercent: xPercent })
-        gsap.set(secondText.current, { xPercent: xPercent })
+        gsap.set(firstText.current, { xPercent: xPercent });
+        gsap.set(secondText.current, { xPercent: xPercent });
         xPercent += 0.6 * direction;
-        requestAnimationFrame(animation)
+        requestAnimationFrame(animation);
     }
 
     return (
