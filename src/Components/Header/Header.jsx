@@ -1,8 +1,9 @@
 import { forwardRef, useEffect, useRef } from 'react';
 import './Header.css'
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger, SplitText } from 'gsap/all';
 import Framer from '../Magnetic/Framer';
+import Magnetic from '../Magnetic';
 
 const Header = forwardRef(function Header(props, ref) {
 
@@ -48,9 +49,11 @@ const Header = forwardRef(function Header(props, ref) {
             <header className="header">
                 <div className="container">
                     <div className="header-inner">
-                        <div className="header-logo">
-                            <h1>Alibekov Azimbek</h1>
-                        </div>
+                        <Magnetic>
+                            <div className="header-logo">
+                                <h1>Alibekov Azimbek</h1>
+                            </div>
+                        </Magnetic>
 
                         <div className="header-menu">
                             <Framer>

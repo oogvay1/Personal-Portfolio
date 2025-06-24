@@ -16,6 +16,11 @@
     align-items: end;
 }
 
+.header-logo {
+    width: 180px;
+    mix-blend-mode: difference;
+}
+
 .header-logo h1 {
     font-size: 21px;
 }
@@ -65,15 +70,15 @@
 }
 
 .bounds {
-    width: 200px;
-    height: 100px;
+    width: 100px;
+    height: 90px;
     left: -60%;
     top: -200%;
     position: absolute;
 }
 
 .bounds:hover {
-    scale: 2;
+    scale: 2.2;
 }
 
 @media screen and (max-widht: 1800px) {

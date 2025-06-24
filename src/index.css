@@ -26,3 +26,32 @@ a {
     margin: 0 auto;
     width: 100%;
 }
+
+.circa-text-container {
+    position: relative;
+    height: 100vh;
+    /* full screen */
+    display: flex;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.circa-text {
+    font-size: 380px;
+    left: 0;
+    /* very big, like in your screenshot */
+    font-weight: bold;
+    top: 0;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    transform-origin: top;
+    will-change: transform;
+}
+
+
+.div {
+    padding-bottom: 1000px;
+}
