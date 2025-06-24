@@ -52,7 +52,7 @@ const Header = forwardRef(function Header(props, ref) {
                     <div className="header-inner">
                         <Magnetic>
                             <div className="header-logo">
-                                <h1>Alibekov Azimbek</h1>
+                                <h1><h1>Alibekov Azimbek</h1></h1>
                             </div>
                         </Magnetic>
 
