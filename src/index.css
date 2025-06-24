@@ -9,6 +9,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
+*::selection {
+    background-color: #000000;
+    color: #F3F3F3;
+}
+
 body {
     background-color: #F3F3F3;
 }
@@ -28,29 +33,39 @@ a {
 }
 
 .circa-text-container {
-    position: relative;
+    position: absolute;
     height: 100vh;
-    /* full screen */
+    width: 100%;
     display: flex;
     top: 0;
-    align-items: center;
+    left: 0;
+    z-index: 1;
+    align-items: start;
     justify-content: center;
     overflow: hidden;
 }
 
 .circa-text {
-    font-size: 380px;
+    font-size: 450px;
     left: 0;
-    /* very big, like in your screenshot */
+    height: 100vh;
     font-weight: bold;
-    top: 0;
     line-height: 0.8;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     transform-origin: top;
+    pointer-events: none;
     will-change: transform;
 }
 
+.background {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    top: 0;
+    left: 0;
+}
 
 .div {
     padding-bottom: 1000px;

@@ -10,6 +10,7 @@ const Header = forwardRef(function Header(props, ref) {
     const firstText = useRef(null);
     const secondText = useRef(null);
     const slider = useRef(null)
+    const header = useRef(null);
     let xPercent = 0;
     let direction = 1;
 
@@ -46,7 +47,7 @@ const Header = forwardRef(function Header(props, ref) {
 
     return (
         <>
-            <header className="header">
+            <header ref={header} className="header">
                 <div className="container">
                     <div className="header-inner">
                         <Magnetic>
