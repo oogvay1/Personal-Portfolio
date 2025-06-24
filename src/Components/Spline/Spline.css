@@ -5,3 +5,7 @@
     left: 90%;
     background-color: #ba6666;
 }
+
+.spline {
+    transform: translateY(100px);
+}
