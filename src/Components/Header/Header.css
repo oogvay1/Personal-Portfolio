@@ -81,6 +81,10 @@
     scale: 2.2;
 }
 
+.logo-h1 {
+    clip-path: polygon(0 0, 100% 1%, 100% 80%, 0 80%);
+}
+
 @media screen and (max-widht: 1800px) {
     .header-inner {
         max-width: 1800px;

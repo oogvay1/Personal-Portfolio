@@ -2,6 +2,7 @@ import { forwardRef, useEffect, useRef } from 'react';
 import './Header.css'
 import gsap from 'gsap';
 import { ScrollTrigger, SplitText } from 'gsap/all';
+import SplitType from 'split-type';
 import Framer from '../Magnetic/Framer';
 import Magnetic from '../Magnetic';
 
@@ -45,6 +46,36 @@ const Header = forwardRef(function Header(props, ref) {
         requestAnimationFrame(animation);
     }
 
+    useEffect(() => {
+        if (props.isComplete) {
+            gsap.set('.logo-h1', {
+                y: 20,
+                opacity: 0,
+            });
+
+            gsap.to('.logo-h1', {
+                y: 0,
+                opacity: 1,
+                ease: "elastic.out(.4, 0.5)",
+                duration: 2.1,
+                delay: 0.2,
+            });
+
+            gsap.set('.header-menu', {
+                y: 20,
+                opacity: 0,
+            });
+
+            gsap.to('.header-menu', {
+                y: 0,
+                opacity: 1,
+                ease: "elastic.out(.4, 0.5)",
+                duration: 2.1,
+                delay: 0.2,
+            });
+        }
+    }, [props.isComplete]);
+
     return (
         <>
             <header ref={header} className="header">
@@ -52,7 +83,7 @@ const Header = forwardRef(function Header(props, ref) {
                     <div className="header-inner">
                         <Magnetic>
                             <div className="header-logo">
-                                <h1><h1>Alibekov Azimbek</h1></h1>
+                                <h1 className='logo-h1'>Alibekov Azimbek</h1>
                             </div>
                         </Magnetic>
 

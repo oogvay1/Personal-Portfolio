@@ -24,7 +24,7 @@ export default function BackgroundText({ isComplete, text }) {
             gsap.to('.char', {
                 y: 0,
                 opacity: 1,
-                ease: "elastic.out(.4, 0.5)",
+                ease: "elastic.out(.5, 0.5)",
                 duration: 2,
                 stagger: 0.05,
                 delay: 0.2,

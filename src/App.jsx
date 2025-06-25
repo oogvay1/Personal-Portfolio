@@ -20,7 +20,7 @@ function App() {
       {loadingComplete && <Cursor sticky={sticky} />}
       <Spline />
       <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
-      <Header ref={sticky} />
+      <Header isComplete={loadingComplete} ref={sticky} />
       <div className="div"></div>
       <Landing isComplete={loadingComplete} setIsComplete={setLoadingComplete} />
     </>
