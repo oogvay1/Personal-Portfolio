@@ -2,8 +2,11 @@
     width: 150px;
     height: 50px;
     position: absolute;
-    left: 90%;
-    background-color: #ba6666;
+    margin-top: -60px;
+    margin-left: 91.5%;
+    background-color: #F3F3F3;
+    mix-blend-mode: none;
+    z-index: 9999;
 }
 
 .spline {
