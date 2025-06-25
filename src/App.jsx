@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Cursor from "./Components/Cursor/Cursor";
 import Header from "./Components/Header/Header";
 import Spline from './Components/Spline/Spline'
 import Lenis from "lenis";
 import BackgroundText from "./Components/BackgroundText";
+import Landing from "./Components/Landing/Landing";
 
 function App() {
 
@@ -11,15 +12,17 @@ function App() {
     autoRaf: true,
   });
 
+  const [loadingComplete, setLoadingComplete] = useState(false);
   const sticky = useRef(null);
 
   return (
     <>
-      <Cursor sticky={sticky} />
+      {loadingComplete && <Cursor sticky={sticky} />}
       <Spline />
-      <BackgroundText text="AZIMBEK" />
+      <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
       <Header ref={sticky} />
       <div className="div"></div>
+      <Landing isComplete={loadingComplete} setIsComplete={setLoadingComplete} />
     </>
   );
 }

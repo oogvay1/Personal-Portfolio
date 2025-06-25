@@ -27,7 +27,7 @@ a {
 }
 
 .container {
-    max-width: 1850px;
+    max-width: 1550px;
     margin: 0 auto;
     width: 100%;
 }
@@ -40,8 +40,6 @@ a {
     top: 0;
     left: 0;
     z-index: 1;
-    align-items: start;
-    justify-content: center;
     overflow: hidden;
 }
 
@@ -56,6 +54,8 @@ a {
     transform-origin: top;
     pointer-events: none;
     will-change: transform;
+    transform: translateY(20px);
+    clip-path: polygon(0 0, 100% 1%, 100% 40%, 0 40%);
 }
 
 .background {
@@ -69,4 +69,19 @@ a {
 
 .div {
     padding-bottom: 1000px;
+}
+
+
+@media screen and (max-width: 1600px) {
+    .container {
+        max-width: 1550px;
+    }
+
+    .circa-text {
+        font-size: 380px;
+    }
+
+    .circa-text-container {
+        top: 50px;
+    }
 }

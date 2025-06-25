@@ -2,8 +2,11 @@ import gsap from "gsap";
 import { useRef, useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { SplitText } from "gsap/SplitText";
+import SplitType from "split-type";
 
-export default function BackgroundText({ text }) {
+export default function BackgroundText({ isComplete, text }) {
+    gsap.registerPlugin(SplitText);
 
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -11,24 +14,24 @@ export default function BackgroundText({ text }) {
     const containerRef = useRef(null);
 
     useEffect(() => {
+        if (isComplete) {
+            const myText = new SplitType('.circa-text');
+            gsap.set('.char', {
+                y: 200,
+                opacity: 0,
+            });
 
-
-        gsap.set(textRef.current, {
-            scaleY: 3,
-            opacity: 1
-        })
-
-        gsap.to(
-            textRef.current,
-            {
-                y: 40,
+            gsap.to('.char', {
+                y: 0,
                 opacity: 1,
-                scaleY: 1,
-                duration: 4,
-                ease: "elastic.inOut(.1, 0.2)",
-            }
-        );
-    }, []);
+                ease: "elastic.out(.4, 0.5)",
+                duration: 2,
+                stagger: 0.05,
+                delay: 0.2,
+            });
+        }
+    }, [isComplete]);
+
 
     return (
         <>
