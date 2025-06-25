@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 
 export default function Count({
@@ -15,6 +15,7 @@ export default function Count({
 }) {
     const ref = useRef(null);
     const motionValue = useMotionValue(direction === "down" ? to : from);
+    const [hide, setHide] = useState(false);
 
     const damping = 20 + 40 * (1 / duration);
     const stiffness = 100 * (1 / duration);
@@ -41,7 +42,6 @@ export default function Count({
             const timeoutId = setTimeout(() => {
                 motionValue.set(direction === "down" ? from : to);
             }, delay * 1000);
-            
 
             const durationTimeoutId = setTimeout(() => {
                 if (typeof onEnd === "function") {
@@ -58,7 +58,14 @@ export default function Count({
 
     useEffect(() => {
         const unsubscribe = springValue.on("change", (latest) => {
-            if (ref.current) {
+            if (ref.current && !hide) {
+                const intValue = Math.round(latest);
+
+                if (intValue >= to) {
+                    setHide(true);
+                    return;
+                }
+
                 const options = {
                     useGrouping: !!separator,
                     minimumFractionDigits: 0,
@@ -66,17 +73,21 @@ export default function Count({
                 };
 
                 const formattedNumber = Intl.NumberFormat("en-US", options).format(
-                    latest.toFixed(0)
+                    intValue
                 );
 
+                const padded = formattedNumber.padStart(3, '0'); // ✅ Adds 0s
+
                 ref.current.textContent = separator
-                    ? formattedNumber.replace(/,/g, separator)
-                    : formattedNumber;
+                    ? padded.replace(/,/g, separator)
+                    : padded;
             }
         });
 
         return () => unsubscribe();
-    }, [springValue, separator]);
+    }, [springValue, separator, hide, to]);
 
-    return <span ref={ref} />;
+    if (hide) return null;
+
+    return <span ref={ref} className={className} />;
 }
