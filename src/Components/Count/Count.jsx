@@ -1,93 +1,57 @@
-import { useEffect, useRef, useState } from "react";
-import { useInView, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import "./Count.css";
 
-export default function Count({
-    to,
-    from = 0,
-    direction = "up",
-    delay = 0,
-    duration = 2,
-    className = "",
-    startWhen = true,
-    separator = "",
-    onStart,
-    onEnd,
-}) {
-    const ref = useRef(null);
-    const motionValue = useMotionValue(direction === "down" ? to : from);
-    const [hide, setHide] = useState(false);
-
-    const damping = 20 + 40 * (1 / duration);
-    const stiffness = 100 * (1 / duration);
-
-    const springValue = useSpring(motionValue, {
-        damping,
-        stiffness,
-    });
-
-    const isInView = useInView(ref, { once: true, margin: "0px" });
+export default function Count({ target = 100, duration = 3, complete }) {
+    const digitRefs = useRef([]);
 
     useEffect(() => {
-        if (ref.current) {
-            ref.current.textContent = String(direction === "down" ? to : from);
-        }
-    }, [from, to, direction]);
+        const obj = { value: 0 };
 
-    useEffect(() => {
-        if (isInView && startWhen) {
-            if (typeof onStart === "function") {
-                onStart();
-            }
+        gsap.to(obj, {
+            value: target,
+            duration,
+            ease: "power1.out",
+            onUpdate: () => {
+                const numberStr = Math.floor(obj.value).toString().padStart(3, "0");
 
-            const timeoutId = setTimeout(() => {
-                motionValue.set(direction === "down" ? from : to);
-            }, delay * 1000);
+                numberStr.split("").forEach((digit, index) => {
+                    const el = digitRefs.current[index];
+                    if (el) {
+                        gsap.to(el, {
+                            y: `-${parseInt(digit) * 60}px`,
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            },
+            onComplete: () => {
+                const time = setTimeout(() => {
+                    complete(true);
+                }, 800)
 
-            const durationTimeoutId = setTimeout(() => {
-                if (typeof onEnd === "function") {
-                    onEnd();
+                return () => {
+                    clearTimeout(time)
                 }
-            }, delay * 1000 + duration * 1000);
-
-            return () => {
-                clearTimeout(timeoutId);
-                clearTimeout(durationTimeoutId);
-            };
-        }
-    }, [isInView, startWhen, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
-
-    useEffect(() => {
-        const unsubscribe = springValue.on("change", (latest) => {
-            if (ref.current && !hide) {
-                const intValue = Math.round(latest);
-
-                if (intValue >= to) {
-                    setHide(true);
-                    return;
-                }
-
-                const options = {
-                    useGrouping: !!separator,
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                };
-
-                const formattedNumber = Intl.NumberFormat("en-US", options).format(
-                    intValue
-                );
-
-                const padded = formattedNumber.padStart(3, '0'); // ✅ Adds 0s
-
-                ref.current.textContent = separator
-                    ? padded.replace(/,/g, separator)
-                    : padded;
             }
         });
+    }, [target, duration]);
 
-        return () => unsubscribe();
-    }, [springValue, separator, hide, to]);
-
-    if (hide) return null;
-
-    return <span ref={ref} className={className} />;
+    return (
+        <div className="counter-box">
+            {[0, 1, 2].map((_, i) => (
+                <div className="digit-mask" key={i}>
+                    <div
+                        className="digit-strip"
+                        ref={(el) => (digitRefs.current[i] = el)}
+                    >
+                        {[...Array(10)].map((_, n) => (
+                            <div className="digit" key={n}>{n}</div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 }

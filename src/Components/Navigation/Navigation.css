@@ -1,0 +1,24 @@
+.navigation {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    z-index: 9997;
+    position: fixed;
+    background-color: beige;
+}
+
+.nav-text {
+    position: absolute;
+    z-index: -1;
+}
+
+.spline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+}

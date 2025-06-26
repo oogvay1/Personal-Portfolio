@@ -6,6 +6,7 @@ import Lenis from "lenis";
 import BackgroundText from "./Components/BackgroundText";
 import Landing from "./Components/Landing/Landing";
 import SideText from "./Components/SideText/SideText";
+import Navigation from "./Components/Navigation/Navigation";
 
 function App() {
 
@@ -14,20 +15,23 @@ function App() {
   });
 
   const [loadingComplete, setLoadingComplete] = useState(false);
+  const [isHover, setIsHover] = useState(false);
   const sticky = useRef(null);
+  const about = useRef(null);
 
   return (
     <>
-      {loadingComplete && <Cursor sticky={sticky} />}
+      {loadingComplete && <Cursor sticky={sticky} about={about} />}
       <Spline />
 
       <main>
-        <BackgroundText isComplete={loadingComplete} text="AZIMBEk" />
-        <SideText />
+        <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
+        <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
       </main>
       <Header isComplete={loadingComplete} ref={sticky} />
       <div className="div"></div>
       <Landing isComplete={loadingComplete} setIsComplete={setLoadingComplete} />
+      <Navigation />
     </>
   );
 }

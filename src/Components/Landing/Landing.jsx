@@ -14,7 +14,7 @@ function Landing({ isComplete, setIsComplete }) {
             clearTimeout(time);
         }
     }
-
+    
     return (
         <>
             <div className="top-path"></div>
@@ -33,15 +33,7 @@ function Landing({ isComplete, setIsComplete }) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <Count
-                                from={0}
-                                to={101}
-                                separator=","
-                                direction="up"
-                                duration={1}
-                                className="count-up-text"
-                                onEnd={() => AnimEnd()}
-                            />
+                            <Count target={100} duration={3} complete={setIsComplete} />
                         </motion.h1>
                     </motion.div>
                 )}

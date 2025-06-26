@@ -6,7 +6,8 @@
     left: 0;
     display: flex;
     justify-content: center;
-    z-index: 1;
+    z-index: 9996;
+    mix-blend-mode: difference;
 }
 
 .header-inner {
@@ -14,6 +15,7 @@
     height: 50px;
     justify-content: space-between;
     align-items: end;
+    color: white;
 }
 
 .header-logo {
@@ -23,6 +25,7 @@
 
 .header-logo h1 {
     font-size: 21px;
+    font-weight: 500;
 }
 
 .header-menu {
@@ -46,7 +49,7 @@
     height: 3px;
     display: block;
     mix-blend-mode: difference;
-    background-color: black;
+    background-color: white;
 }
 
 .menu-text {

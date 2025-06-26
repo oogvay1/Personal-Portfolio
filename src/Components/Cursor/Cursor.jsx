@@ -2,7 +2,7 @@ import './Cursor.css'
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, transform, animate } from 'framer-motion';
 
-export default function Cursor({ sticky }) {
+export default function Cursor({ sticky, about, hover }) {
 
     const [isHovered, setIsHovered] = useState(false);
     const cursor = useRef(null);
@@ -31,7 +31,7 @@ export default function Cursor({ sticky }) {
 
     const manageMouseMove = e => {
         const { clientX, clientY } = e;
-        const { left, top, height, width } = sticky.current.getBoundingClientRect();
+        const { left, top, height, width } = sticky && sticky.current.getBoundingClientRect();
 
         const center = { x: left + width / 2, y: top + height / 2 }
 
@@ -66,12 +66,12 @@ export default function Cursor({ sticky }) {
     }
 
     useEffect(() => {
-        sticky.current.addEventListener("mouseenter", manageMouseOver)
-        sticky.current.addEventListener("mouseleave", manageMouseLeave)
+        sticky && sticky.current.addEventListener("mouseenter", manageMouseOver)
+        sticky && sticky.current.addEventListener("mouseleave", manageMouseLeave)
         window.addEventListener("mousemove", manageMouseMove);
         return () => {
-            sticky.current.removeEventListener("mouseenter", manageMouseOver)
-            sticky.current.removeEventListener("mouseleave", manageMouseLeave)
+            sticky && sticky.current.removeEventListener("mouseenter", manageMouseOver)
+            sticky && sticky.current.removeEventListener("mouseleave", manageMouseLeave)
             window.removeEventListener("mousemove", manageMouseMove)
         }
     }, [isHovered])
@@ -79,6 +79,29 @@ export default function Cursor({ sticky }) {
     const template = ({ rotate, scaleX, scaleY }) => {
         return `rotate(${rotate}) scaleX(${scaleX}) scaleY(${scaleY})`
     }
+
+    const handleEnter = () => {
+        animate(cursor.current, { scaleX: 4, scaleY: 4 }, { duration: 0.2 });
+    };
+
+    const handleLeave = () => {
+        animate(cursor.current, { scaleX: 1, scaleY: 1 }, { duration: 0.2 });
+    };
+
+    useEffect(() => {
+        if (!about || !about.current) return;
+
+        const el = about.current;
+
+        el.addEventListener("mouseenter", handleEnter);
+        el.addEventListener("mouseleave", handleLeave);
+
+        return () => {
+            el.removeEventListener("mouseenter", handleEnter);
+            el.removeEventListener("mouseleave", handleLeave);
+        };
+    }, []);
+
 
     return (
         <div className="cursorContainer">
@@ -89,6 +112,7 @@ export default function Cursor({ sticky }) {
                     top: smoothMouse.y,
                     scaleX: scale.x,
                     scaleY: scale.y,
+                    opacity: (hover && 0) || 1
                 }}
                 animate={{
                     width: cursorSize,

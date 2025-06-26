@@ -1,11 +1,47 @@
+import { forwardRef, useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { motion } from 'framer-motion';
+import SplitType from 'split-type';
+import useMouse from '../useMouse';
+import './SideText.css';
 
-function SideText() {
+const SideText = forwardRef((props, ref) => {
+    const textRef = useRef(null);
+    const splitRef = useRef(null);
+    const { x, y } = useMouse();
+    const size = props.hover ? 400 : 40;
 
+
+    useEffect(() => {
+        if (splitRef.current) {
+            splitRef.current.revert();
+        }
+
+        splitRef.current = new SplitType('.tt', {
+            types: 'lines',
+            lineClass: 'line-child',
+        });
+
+        const lines = textRef.current.querySelectorAll('.line-child');
+
+        gsap.set(lines, { y: 100, opacity: 0 });
+
+        gsap.to(lines, {
+            y: 0,
+            opacity: 1,
+            stagger: 0.15,
+            duration: 1,
+            ease: 'power4.out',
+        });
+    }, [props.completed]);
+console.log(props.hover)
     return (
-        <>
-            <h1>Front End Developer</h1>
-        </>
+        <div className="text-container">
+            <div ref={textRef} className="body">
+                <p >Design meets motion — where code becomes character.</p>
+            </div>
+        </div>
     );
-}
+})
 
-export default SideText
+export default SideText;

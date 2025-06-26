@@ -1,12 +1,17 @@
+.ahref-container {
+    position: relative;
+    width: 100.5%;
+    top: -70px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
 .ahref {
-    width: 150px;
+    width: 200px;
     height: 50px;
-    position: absolute;
-    margin-top: -60px;
-    margin-left: 91.5%;
     background-color: #F3F3F3;
-    mix-blend-mode: none;
-    z-index: 9999;
+    z-index: 9996;
 }
 
 .spline {
