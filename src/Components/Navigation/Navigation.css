@@ -3,17 +3,24 @@
     width: 100%;
     top: 0;
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-self: center;
     z-index: 9997;
     position: fixed;
-    background-color: beige;
+    color: #ffffff;
+    background-color: #000000;
 }
 
 .nav-text {
-    position: absolute;
-    z-index: -1;
+    height: 100vh;
+}
+
+.nav-text h1 {
+    z-index: 9999;
+    font-size: 130px;
+}
+
+.nav-text h1::selection {
+    background-color: white;
+    color: black;
 }
 
 .spline {
