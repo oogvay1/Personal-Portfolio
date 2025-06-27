@@ -6,7 +6,7 @@
     list-style: none;
     text-decoration: none;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
 }
 
 *::selection {
@@ -37,7 +37,7 @@ a {
 .circa-text-container {
     position: absolute;
     height: 100vh;
-    max-width: 1600px;
+    max-width: 2000px;
     width: 100%;
     display: flex;
     top: 0;
@@ -48,8 +48,8 @@ a {
 }
 
 .circa-text {
-    font-size: 450px;
-    width: 2400px;
+    font-size: 457px;
+    width: 3000px;
     height: 100vh;
     font-weight: bold;
     line-height: 0.8;
@@ -66,17 +66,14 @@ a {
     padding-bottom: 1000px;
 }
 
-span {
-    font-family: monospace;
-}
-
 @media screen and (max-width: 1600px) {
     .container {
         max-width: 1550px;
     }
 
     .circa-text {
-        font-size: 380px;
+        font-size: 390px;
+        width: 1880px;
         transform: translateY(20px);
     }
 
