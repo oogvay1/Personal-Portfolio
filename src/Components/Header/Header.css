@@ -50,6 +50,24 @@
     display: block;
     mix-blend-mode: difference;
     background-color: white;
+    transition: all .4s ease-in-out;
+}
+
+.menu-lines[data-line="true"]::before {
+    width: 45px;
+    height: 3px;
+    margin-top: 2px;
+    rotate: -45deg;
+    background-color: white;
+}
+
+.menu-lines[data-line="true"]::after {
+    width: 45px;
+    height: 3px;
+    rotate: 45deg;
+    margin-left: -1px;
+    margin-top: -13px;
+    background-color: white;
 }
 
 .menu-text {

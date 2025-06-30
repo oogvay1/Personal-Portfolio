@@ -111,7 +111,7 @@ function Navigation() {
 
         const animate = () => {
             xPercent += 0.4 * direction;
-            if (xPercent <= -118.4) {
+            if (xPercent <= -133.4) {
                 xPercent = 0
             }
 
@@ -131,7 +131,7 @@ function Navigation() {
 
         const animate = () => {
             xPercent += 0.4 * direction;
-            if (xPercent <= -113) {
+            if (xPercent <= -126.7) {
                 xPercent = 0
             }
 
@@ -150,8 +150,8 @@ function Navigation() {
         let direction = -1;
 
         const animate = () => {
-            xPercent += 0.4 * direction;
-            if (xPercent <= -146) {
+            xPercent += 0.6 * direction;
+            if (xPercent <= -166) {
                 xPercent = 0
             }
 
@@ -171,7 +171,7 @@ function Navigation() {
 
         const animate = () => {
             xPercent += 0.4 * direction;
-            if (xPercent <= -111) {
+            if (xPercent <= -124.1) {
                 xPercent = 0
             }
 

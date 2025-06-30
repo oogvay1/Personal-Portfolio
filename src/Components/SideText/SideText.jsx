@@ -11,7 +11,6 @@ const SideText = forwardRef((props, ref) => {
     const { x, y } = useMouse();
     const size = props.hover ? 400 : 40;
 
-
     useEffect(() => {
         if (splitRef.current) {
             splitRef.current.revert();
@@ -33,7 +32,7 @@ const SideText = forwardRef((props, ref) => {
                 y: 0,
                 opacity: 1,
                 stagger: 0.15,
-                duration: 1,
+                duration: 2,
                 ease: 'power4.out',
             });
         })
@@ -42,7 +41,7 @@ const SideText = forwardRef((props, ref) => {
     return (
         <div className="text-container">
             <div ref={textRef} className="body">
-                <p >Design meets motion — where code becomes character.</p>
+                <p><span className='tt'>Design meets</span> <span className='tt'>motion — where</span> <span className='tt'>code becomes</span> <span className='tt'>character.</span></p>
             </div>
         </div>
     );

@@ -35,7 +35,7 @@ export default function BackgroundText({ isComplete, text }) {
     return (
         <>
             <div ref={containerRef} className="circa-text-container">
-                <h1 data-speed=".5" ref={textRef} className="circa-text">{text}</h1>
+                <h1 ref={textRef} className="circa-text">{text}</h1>
             </div>
         </>
     );

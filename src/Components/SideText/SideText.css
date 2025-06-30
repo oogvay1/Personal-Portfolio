@@ -35,6 +35,7 @@
 }
 
 .tt {
+    display: inline-block;
     height: 36px;
     overflow: hidden;
 }

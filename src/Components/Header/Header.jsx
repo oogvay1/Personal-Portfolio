@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import './Header.css'
 import gsap from 'gsap';
 import { ScrollTrigger, SplitText } from 'gsap/all';
@@ -12,6 +12,7 @@ const Header = forwardRef(function Header(props, ref) {
     const secondText = useRef(null);
     const slider = useRef(null)
     const header = useRef(null);
+    const [isClick, setIsClicked] = useState(false);
     let xPercent = 0;
     let direction = 1;
 
@@ -78,6 +79,18 @@ const Header = forwardRef(function Header(props, ref) {
         }
     }, [props.isComplete]);
 
+    const handleClick = () => {
+        setIsClicked(prev => !prev);
+    }
+
+    useEffect(() => {
+        ref.current.addEventListener("click", handleClick)
+
+        return () => {
+            ref.current.removeEventListener("click", handleClick)
+        }
+    }, [])
+
     return (
         <>
             <header ref={header} className="header">
@@ -91,7 +104,7 @@ const Header = forwardRef(function Header(props, ref) {
 
                         <div className="header-menu">
                             <Framer>
-                                <div ref={ref} className="menu-lines">
+                                <div data-line={isClick ? "true" : "false"} ref={ref} className="menu-lines">
                                     <div className="bounds"></div>
                                 </div>
                             </Framer>

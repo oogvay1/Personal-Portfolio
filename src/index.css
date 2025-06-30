@@ -16,7 +16,7 @@
 
 body {
     background-color: #F3F3F3;
-    overflow-x: hidden;
+    overflow: hidden;
     height: 2000px;
 }
 

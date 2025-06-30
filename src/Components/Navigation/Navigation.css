@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .navigation {
@@ -97,7 +97,7 @@ body {
     position: absolute;
     display: flex;
     justify-content: space-between;
-    width: 1580px;
+    width: 1880px;
 }
 
 .time p {

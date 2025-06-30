@@ -25,13 +25,16 @@ function App() {
       <Spline />
 
       <main>
-        <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
-        <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
+        <section>
+          <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
+          <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
+        </section>
+        
       </main>
       <Header isComplete={loadingComplete} ref={sticky} />
       <div className="div"></div>
       <Landing isComplete={loadingComplete} setIsComplete={setLoadingComplete} />
-      <Navigation />
+      {/* <Navigation /> */}
     </>
   );
 }
