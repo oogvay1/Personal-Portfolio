@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .navigation {
     height: 100%;
     width: 100%;
@@ -10,24 +14,36 @@
 }
 
 .nav-text {
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin: 0 auto;
-    transform: translateY(200px);
 }
 
 .navigator {
     width: 100%;
     position: relative;
     overflow: hidden;
-    font-size: 154px;
+    font-size: 150px;
     display: flex;
     font-weight: 500;
+    height: 125px;
+    align-items: center;
     justify-content: center;
+    border-bottom: 1px solid #ccc;
     color: white;
     font-family: 'Satoshi', sans-serif;
+}
+
+.home {
+    height: 1px;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    background-color: #ccc;
 }
 
 .navigator .overlay {
@@ -37,12 +53,20 @@
     height: 100%;
     top: -100%;
     background: white;
-    z-index: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    overflow: hidden;
 }
 
 .navigator span {
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
     transition: color 0.4s ease;
 }
 
@@ -58,23 +82,49 @@
     z-index: 9998;
 }
 
-.nav-line {
-    width: 1800px;
-    height: 2px;
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    border-radius: 100px;
-    transform: translateX(-50%);
-    background-color: #ffffff;
-}
-
 .time {
-    max-width: 1800px;
+    max-width: 1550px;
     margin: 0 auto;
     width: 100%;
-    display: flex;
     position: relative;
-    align-items: center;
+    display: flex;
+    align-items: end;
+    transform: translateY(-10px);
+    justify-content: center;
+}
+
+.time-main {
+    position: absolute;
+    display: flex;
     justify-content: space-between;
+    width: 1580px;
+}
+
+.time p {
+    font-size: 30px;
+    height: 40px;
+}
+
+.overlay {
+    position: relative;
+    overflow: hidden;
+    height: 100px;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    background: #111;
+}
+
+.overlay img {
+    width: 270px;
+}
+
+.overlay h1 {
+    font-size: 10rem;
+    color: black;
+}
+
+.overlay h1.slider-text {
+    left: 100%;
+    position: absolute;
 }

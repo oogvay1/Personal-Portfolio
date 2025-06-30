@@ -2,7 +2,7 @@ import './Cursor.css'
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, transform, animate } from 'framer-motion';
 
-export default function Cursor({ sticky, about, hover }) {
+export default function Cursor({ sticky, about, hover,  }) {
 
     const [isHovered, setIsHovered] = useState(false);
     const cursor = useRef(null);
@@ -65,9 +65,14 @@ export default function Cursor({ sticky, about, hover }) {
         animate(cursor.current, { scaleX: 1, scaleY: 1 }, { duration: 0.1 }, { type: "spring" })
     }
 
+    const manageMouseClick = () => {
+        animate(cursor.current, { scaleX: 3, scaleY: 3 }, { duration: 0.1 }, { type: "spring" })
+    }
+
     useEffect(() => {
         sticky && sticky.current.addEventListener("mouseenter", manageMouseOver)
         sticky && sticky.current.addEventListener("mouseleave", manageMouseLeave)
+        sticky && sticky.current.addEventListener("click", manageMouseClick)
         window.addEventListener("mousemove", manageMouseMove);
         return () => {
             sticky && sticky.current.removeEventListener("mouseenter", manageMouseOver)

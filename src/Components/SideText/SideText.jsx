@@ -24,17 +24,21 @@ const SideText = forwardRef((props, ref) => {
 
         const lines = textRef.current.querySelectorAll('.line-child');
 
-        gsap.set(lines, { y: 100, opacity: 0 });
+        lines.forEach(el => {
+            gsap.set(el, { y: 100, opacity: 0 });
+        })
 
-        gsap.to(lines, {
-            y: 0,
-            opacity: 1,
-            stagger: 0.15,
-            duration: 1,
-            ease: 'power4.out',
-        });
+        lines.forEach(el => {
+            gsap.to(el, {
+                y: 0,
+                opacity: 1,
+                stagger: 0.15,
+                duration: 1,
+                ease: 'power4.out',
+            });
+        })
     }, [props.completed]);
-console.log(props.hover)
+    console.log(props.hover)
     return (
         <div className="text-container">
             <div ref={textRef} className="body">
