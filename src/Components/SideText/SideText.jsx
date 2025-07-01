@@ -37,7 +37,7 @@ const SideText = forwardRef((props, ref) => {
             });
         })
     }, [props.completed]);
-    console.log(props.hover)
+   
     return (
         <div className="text-container">
             <div ref={textRef} className="body">

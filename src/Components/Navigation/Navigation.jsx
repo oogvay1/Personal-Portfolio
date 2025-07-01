@@ -6,7 +6,7 @@ import { ScrollTrigger, SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import Magnetic from '../Magnetic';
 
-function Navigation() {
+function Navigation({ isClick }) {
 
     let [time, setTime] = useState(new Date().toLocaleTimeString());
     let [date, setDate] = useState(new Date().getFullYear());
@@ -22,6 +22,7 @@ function Navigation() {
     }, []);
 
     const itemsRef = useRef([]);
+    const main = useRef(null);
 
     useEffect(() => {
         itemsRef.current.forEach(item => {
@@ -77,24 +78,6 @@ function Navigation() {
             };
         });
     }, []);
-
-    const works = [{
-        work: "HOME",
-        text: "BACK TO HOME",
-        src: "src/assets/Mask group.png"
-    }, {
-        work: "WORK",
-        text: "VIEW MY WORKS",
-        src: "src/assets/Mask group.png"
-    }, {
-        work: "CONTACT",
-        text: "LET'S TALK",
-        src: "src/assets/Mask group.png"
-    }, {
-        work: "ABOUT",
-        text: "KNOW ABOUT ME",
-        src: "src/assets/Mask group.png"
-    }];
 
     const firstText = useRef(null);
     const secondText = useRef(null);
@@ -188,9 +171,29 @@ function Navigation() {
         if (el) itemsRef.current[index] = el;
     };
 
+    useEffect(() => {
+        if (isClick) {
+            gsap.to(main.current, {
+                y: 0,
+                duration: 1,
+                transition: {
+                    ease: "power4.out"
+                }
+            })
+        } else {
+            gsap.to(main.current, {
+                y: 920,
+                duration: 1,
+                transition: {
+                    ease: "power4.out"
+                }
+            })
+        }
+    }, [isClick])
+
     return (
         <>
-            <div className="navigation">
+            <div ref={main} className="navigation">
                 <div className="nav-text">
                     <div ref={(el) => setItemRef(el, 0)} className="navigator">
                         <div className='home' />
@@ -233,7 +236,7 @@ function Navigation() {
                             <p>&copy; Azimbek {date}</p>
                         </Magnetic>
                         <Magnetic>
-                            <p><i class="ri-global-line"></i> Uzbekistan {time}</p>
+                            <p><i className="ri-global-line"></i> Uzbekistan {time}</p>
                         </Magnetic>
                     </div>
                 </div>

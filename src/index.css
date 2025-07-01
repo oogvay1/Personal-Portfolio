@@ -66,6 +66,10 @@ a {
     padding-bottom: 1000px;
 }
 
+.menu-lines[data-line="true"] ~ .navigation {
+    z-index: -1;
+}
+
 @media screen and (max-width: 1600px) {
     .container {
         max-width: 1550px;

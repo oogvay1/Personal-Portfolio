@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Cursor from "./Components/Cursor/Cursor";
 import Header from "./Components/Header/Header";
 import Spline from './Components/Spline/Spline'
@@ -16,8 +16,13 @@ function App() {
 
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const [isClick, setIsClick] = useState(false);
+
   const sticky = useRef(null);
   const about = useRef(null);
+  const btn = useRef(null);
+
+  console.log(isClick);
 
   return (
     <>
@@ -29,12 +34,12 @@ function App() {
           <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
           <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
         </section>
-        
+
       </main>
-      <Header isComplete={loadingComplete} ref={sticky} />
+      <Header isComplete={loadingComplete} ref={sticky} isClick={isClick} setClick={setIsClick} />
       <div className="div"></div>
       <Landing isComplete={loadingComplete} setIsComplete={setLoadingComplete} />
-      {/* <Navigation /> */}
+      <Navigation isClick={isClick} />
     </>
   );
 }

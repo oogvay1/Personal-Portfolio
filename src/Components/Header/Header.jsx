@@ -12,7 +12,6 @@ const Header = forwardRef(function Header(props, ref) {
     const secondText = useRef(null);
     const slider = useRef(null)
     const header = useRef(null);
-    const [isClick, setIsClicked] = useState(false);
     let xPercent = 0;
     let direction = 1;
 
@@ -80,17 +79,10 @@ const Header = forwardRef(function Header(props, ref) {
     }, [props.isComplete]);
 
     const handleClick = () => {
-        setIsClicked(prev => !prev);
-    }
+        props.setClick(prev => !prev);
+    };
 
-    useEffect(() => {
-        ref.current.addEventListener("click", handleClick)
-
-        return () => {
-            ref.current.removeEventListener("click", handleClick)
-        }
-    }, [])
-
+    console.log(props.isClick)
     return (
         <>
             <header ref={header} className="header">
@@ -104,7 +96,7 @@ const Header = forwardRef(function Header(props, ref) {
 
                         <div className="header-menu">
                             <Framer>
-                                <div data-line={isClick ? "true" : "false"} ref={ref} className="menu-lines">
+                                <div data-line={props.isClick ? "true" : "false"} ref={ref} onClick={handleClick} className="menu-lines">
                                     <div className="bounds"></div>
                                 </div>
                             </Framer>
