@@ -89,6 +89,8 @@ function Navigation({ isClick }) {
     const sevenText = useRef(null);
     const eightText = useRef(null);
 
+    const timeRef = useRef([]);
+
     useEffect(() => {
         let xPercent = 0;
         let direction = -1;
@@ -172,12 +174,15 @@ function Navigation({ isClick }) {
         if (el) itemsRef.current[index] = el;
     };
 
+    const setTimeRef = (el, index) => {
+        if (el) timeRef.current[index] = el;
+    };
+
     useEffect(() => {
         if (isClick) {
+            gsap.killTweensOf(main.current);
+
             gsap.set(main.current, {
-                transformOrigin: "bottom",
-                duration: .001,
-                ease: "cubic-bezier(0.7, 0.0, 0.3, 1.2)",
                 y: -920,
                 display: "block"
             });
@@ -185,45 +190,48 @@ function Navigation({ isClick }) {
             gsap.to(main.current, {
                 y: -7,
                 duration: 3,
-                transformOrigin: "bottom",
-                ease: CustomEase.create("custom", "M0,0 C0.049,0 0.095,0.088 0.3,0.147 0.455,0.192 0.534,0.174 0.576,0.232 0.576,0.232 0.64,0.267 0.669,0.623 0.693,1.038 0.997,1.006 1,1.008"),
+                ease: CustomEase.create("custom", "M0,0 C0.049,0 0.095,0.149 0.3,0.208 0.455,0.253 0.46,0.243 0.557,0.271 0.557,0.271 0.64,0.267 0.669,0.623 0.693,1.038 0.997,1.006 1,1.008")
             });
 
             itemsRef.current.forEach(el => {
+                gsap.killTweensOf(el);
+
                 gsap.set(el, {
                     opacity: 0,
-                    duration: .001
-                })
+                });
 
                 gsap.to(el, {
                     opacity: 1,
                     duration: 2,
-                    ease: "[0.76, 0, 0.24, 1]"
-                })
-            })
+                    ease: [0.76, 0, 0.24, 1]
+                });
+            });
+
         } else {
+            gsap.killTweensOf(main.current);
+
             gsap.to(main.current, {
                 y: 1080,
-                duration: 1,
-                transformOrigin: "bottom",
-                ease: "[0.76, 0, 0.24, 1]",
-                display: "none"
+                duration: 1.5,
+                delay: 0.5,
+                ease: "power4.inOut",
+                onComplete: () => {
+                    gsap.set(main.current, { display: "none" });
+                }
             });
 
             itemsRef.current.forEach(el => {
-                gsap.set(el, {
-                    opacity: 0,
-                    duration: .4
-                })
-
+                gsap.killTweensOf(el);
                 gsap.to(el, {
                     opacity: 0,
                     duration: 1,
-                    ease: "[0.76, 0, 0.24, 1]"
-                })
-            })
+                    delay: 0.5,
+                    ease: [0.76, 0, 0.24, 1]
+                });
+            });
         }
-    }, [isClick])
+    }, [isClick]);
+
 
     return (
         <>
@@ -267,10 +275,10 @@ function Navigation({ isClick }) {
                 <div className="time">
                     <div className="time-main">
                         <Magnetic>
-                            <p>&copy; Azimbek {date}</p>
+                            <p ref={(el) => setTimeRef(el, 0)}>&copy; Azimbek {date}</p>
                         </Magnetic>
                         <Magnetic>
-                            <p><i className="ri-global-line"></i> Uzbekistan {time}</p>
+                            <p ref={(el) => setTimeRef(el, 1)}><i className="ri-global-line"></i> Uzbekistan {time}</p>
                         </Magnetic>
                     </div>
                 </div>
