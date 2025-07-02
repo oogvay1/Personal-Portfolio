@@ -15,44 +15,63 @@
 }
 
 .top-path {
-    width: 0%;
+    width: 100%;
+    /* full width */
     height: 4px;
     top: 0;
     position: fixed;
     background-color: #ffffff;
     z-index: 9999;
     opacity: 1;
-    animation: path 3s ease-in-out forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: path 3.2s ease-in-out forwards;
 }
 
 @keyframes path {
     0% {
-        width: 14%;
+        transform: scaleX(0);
         opacity: 1;
+        transform-origin: left;
+    }
+
+    10% {
+        transform: scaleX(0.14);
+        opacity: 1;
+        transform-origin: left;
     }
 
     20% {
-        width: 40%;
+        transform: scaleX(0.4);
         opacity: 1;
+        transform-origin: left;
     }
 
     50% {
-        width: 60%;
+        transform: scaleX(0.6);
         opacity: 1;
+        transform-origin: left;
     }
 
     80% {
-        width: 80%;
+        transform: scaleX(0.8);
         opacity: 1;
+        transform-origin: left;
+    }
+
+    88% {
+        transform: scaleX(0.90);
+        opacity: 1;
+        transform-origin: left;
     }
 
     94% {
-        width: 95%;
+        transform: scaleX(1);
         opacity: 1;
     }
 
     100% {
-        width: 100%;
-        opacity: 0;
+        transform: scaleX(0);
+        transform-origin: right;
     }
 }

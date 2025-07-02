@@ -173,21 +173,41 @@ function Navigation({ isClick }) {
 
     useEffect(() => {
         if (isClick) {
+            gsap.set(main.current, {
+                transformOrigin: "bottom",
+                duration: .001,
+                ease: "expoScale(0.5,7,none)",
+                y: -920,
+            });
+
             gsap.to(main.current, {
                 y: 0,
                 duration: 1,
-                transition: {
-                    ease: "power4.out"
-                }
+                height: 1200,
+                transformOrigin: "bottom",
+                ease: "expoScale(0.5,7,none)",
+            });
+
+            itemsRef.current.forEach(el => {
+                gsap.set(el, {
+                    opacity: 0,
+                    duration: .001
+                })
+
+                gsap.to(el, {
+                    opacity: 1,
+                    duration: 2,
+                    ease: "expoScale(0.5,7,none)"
+                })
             })
         } else {
             gsap.to(main.current, {
-                y: 920,
+                y: 1080,
                 duration: 1,
-                transition: {
-                    ease: "power4.out"
-                }
-            })
+                height: 200,
+                transformOrigin: "bottom",
+                ease: "expoScale(0.5,7,none)",
+            });
         }
     }, [isClick])
 

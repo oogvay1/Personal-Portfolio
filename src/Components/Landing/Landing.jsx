@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Count from '../Count/Count'
 import "./Landing.css";
+import Counter from "../Countes/Coutes";
 
 function Landing({ isComplete, setIsComplete }) {
 
@@ -14,7 +14,7 @@ function Landing({ isComplete, setIsComplete }) {
             clearTimeout(time);
         }
     }
-    
+
     return (
         <>
             <div className="top-path"></div>
@@ -33,7 +33,16 @@ function Landing({ isComplete, setIsComplete }) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <Count target={100} duration={3} complete={setIsComplete} />
+                            <Counter
+                                value={1}
+                                places={[100, 10, 1]}
+                                fontSize={200}
+                                padding={5}
+                                gap={10}
+                                textColor="white"
+                                fontWeight={900}
+                                onComplete={() => AnimEnd()}
+                            />
                         </motion.h1>
                     </motion.div>
                 )}
