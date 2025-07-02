@@ -173,6 +173,14 @@ function Navigation({ isClick }) {
 
     useEffect(() => {
         if (isClick) {
+            gsap.set(main.current, {
+                y: -920,
+                duration: .01,
+                transition: {
+                    ease: "power4.out"
+                }
+            })
+
             gsap.to(main.current, {
                 y: 0,
                 duration: 1,
@@ -183,7 +191,7 @@ function Navigation({ isClick }) {
         } else {
             gsap.to(main.current, {
                 y: 920,
-                duration: 1,
+                duration: .8,
                 transition: {
                     ease: "power4.out"
                 }
