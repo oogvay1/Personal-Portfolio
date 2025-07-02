@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { ScrollTrigger, SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import Magnetic from '../Magnetic';
+import { CustomEase } from "gsap/CustomEase";
 
 function Navigation({ isClick }) {
 
@@ -174,27 +175,52 @@ function Navigation({ isClick }) {
     useEffect(() => {
         if (isClick) {
             gsap.set(main.current, {
+                transformOrigin: "bottom",
+                duration: .001,
+                ease: "cubic-bezier(0.7, 0.0, 0.3, 1.2)",
                 y: -920,
-                duration: .01,
-                transition: {
-                    ease: "power4.out"
-                }
-            })
+                display: "block"
+            });
 
             gsap.to(main.current, {
-                y: 0,
-                duration: 1,
-                transition: {
-                    ease: "power4.out"
-                }
+                y: -7,
+                duration: 3,
+                transformOrigin: "bottom",
+                ease: CustomEase.create("custom", "M0,0 C0.049,0 0.095,0.088 0.3,0.147 0.455,0.192 0.534,0.174 0.576,0.232 0.576,0.232 0.64,0.267 0.669,0.623 0.693,1.038 0.997,1.006 1,1.008"),
+            });
+
+            itemsRef.current.forEach(el => {
+                gsap.set(el, {
+                    opacity: 0,
+                    duration: .001
+                })
+
+                gsap.to(el, {
+                    opacity: 1,
+                    duration: 2,
+                    ease: "[0.76, 0, 0.24, 1]"
+                })
             })
         } else {
             gsap.to(main.current, {
-                y: 920,
-                duration: .8,
-                transition: {
-                    ease: "power4.out"
-                }
+                y: 1080,
+                duration: 1,
+                transformOrigin: "bottom",
+                ease: "[0.76, 0, 0.24, 1]",
+                display: "none"
+            });
+
+            itemsRef.current.forEach(el => {
+                gsap.set(el, {
+                    opacity: 0,
+                    duration: .4
+                })
+
+                gsap.to(el, {
+                    opacity: 0,
+                    duration: 1,
+                    ease: "[0.76, 0, 0.24, 1]"
+                })
             })
         }
     }, [isClick])

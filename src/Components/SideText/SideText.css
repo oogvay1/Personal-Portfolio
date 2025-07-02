@@ -2,6 +2,7 @@
     max-width: 1550px;
     margin: 0 auto;
     width: 100%;
+    pointer-events: none;
     transform: translateY(-340px);
 }
 
@@ -16,6 +17,7 @@
     width: 300px;
     list-style: 66px;
     cursor: default;
+    pointer-events: none;
 }
 /* 
 .mask {
