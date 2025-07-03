@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { ScrollTrigger, SplitText } from 'gsap/all';
 import gsap from 'gsap';
 import Magnetic from '../Magnetic';
+import { delay, motion } from 'framer-motion';
 import { CustomEase } from "gsap/CustomEase";
 
 function Navigation({ isClick }) {
@@ -184,13 +185,15 @@ function Navigation({ isClick }) {
 
             gsap.set(main.current, {
                 y: -920,
+                height: 620,
                 display: "block"
             });
 
             gsap.to(main.current, {
                 y: -7,
+                height: 1700,
                 duration: 3,
-                ease: CustomEase.create("custom", "M0,0 C0.049,0 0.095,0.149 0.3,0.208 0.455,0.253 0.46,0.243 0.557,0.271 0.557,0.271 0.64,0.267 0.669,0.623 0.693,1.038 0.997,1.006 1,1.008")
+                ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
             });
 
             itemsRef.current.forEach(el => {
@@ -203,6 +206,7 @@ function Navigation({ isClick }) {
                 gsap.to(el, {
                     opacity: 1,
                     duration: 2,
+                    delay: 2,
                     ease: [0.76, 0, 0.24, 1]
                 });
             });
@@ -225,7 +229,6 @@ function Navigation({ isClick }) {
                 gsap.to(el, {
                     opacity: 0,
                     duration: 1,
-                    delay: 0.5,
                     ease: [0.76, 0, 0.24, 1]
                 });
             });
@@ -237,38 +240,38 @@ function Navigation({ isClick }) {
         <>
             <div ref={main} className="navigation">
                 <div className="nav-text">
-                    <div ref={(el) => setItemRef(el, 0)} className="navigator">
+                    <motion.div ref={(el) => setItemRef(el, 0)} className="navigator">
                         <div className='home' />
                         <span>HOME</span>
                         <div className="overlay">
                             <h1 ref={firstText}>BACK TO HOME</h1>
                             <h1 ref={secondText} className='slider-text'>BACK TO HOME</h1>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div ref={(el) => setItemRef(el, 1)} className="navigator">
+                    <motion.div ref={(el) => setItemRef(el, 1)} className="navigator">
                         <span>WORK</span>
                         <div className="overlay">
                             <h1 ref={thirdText}>VIEW MY WORKS</h1>
                             <h1 ref={fourText} className='slider-text'>VIEW MY WORKS</h1>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div ref={(el) => setItemRef(el, 2)} className="navigator">
+                    <motion.div ref={(el) => setItemRef(el, 2)} className="navigator">
                         <span>CONTACT</span>
                         <div className="overlay">
                             <h1 ref={fifText}>LET'S TALK</h1>
                             <h1 ref={sixText} className='slider-text'>LET'S TALK</h1>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div ref={(el) => setItemRef(el, 3)} className="navigator">
+                    <motion.div ref={(el) => setItemRef(el, 3)} className="navigator">
                         <span>ABOUT</span>
                         <div className="overlay">
                             <h1 ref={sevenText}>KNOW ABOUT ME</h1>
                             <h1 ref={eightText} className='slider-text'>KNOW ABOUT ME</h1>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </div>
 
