@@ -41,7 +41,7 @@ const SideText = forwardRef((props, ref) => {
     return (
         <div className="text-container">
             <div ref={textRef} className="body">
-                <p><span className='tt'>Design meets</span> <span className='tt'>motion — where</span> <span className='tt'>code becomes</span> <span className='tt'>character.</span></p>
+                <p><span className='tt'>I’m a professional Front-End Developer creating</span> <span className='tt'> beautiful, responsive, and</span> <span className='tt'>user-focused digital experiences.</span></p>
             </div>
         </div>
     );

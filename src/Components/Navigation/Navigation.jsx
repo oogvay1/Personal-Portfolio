@@ -91,6 +91,7 @@ function Navigation({ isClick }) {
     const eightText = useRef(null);
 
     const timeRef = useRef([]);
+    const spanRef = useRef([]);
 
     useEffect(() => {
         let xPercent = 0;
@@ -179,6 +180,10 @@ function Navigation({ isClick }) {
         if (el) timeRef.current[index] = el;
     };
 
+    const setSpanRef = (el, index) => {
+        if (el) spanRef.current[index] = el;
+    };
+
     useEffect(() => {
         if (isClick) {
             gsap.killTweensOf(main.current);
@@ -196,18 +201,30 @@ function Navigation({ isClick }) {
                 ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
             });
 
-            itemsRef.current.forEach(el => {
+            spanRef.current.forEach(el => {
                 gsap.killTweensOf(el);
 
+                gsap.to(el, {
+                    y: 0,
+                    duration: 1,
+                    delay: 2,
+                    ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
+                });
+            });
+
+
+            timeRef.current.forEach(el => {
                 gsap.set(el, {
                     opacity: 0,
-                });
+                    y: 32
+                })
 
                 gsap.to(el, {
                     opacity: 1,
-                    duration: 2,
-                    delay: 2,
-                    ease: [0.76, 0, 0.24, 1]
+                    y: 0,
+                    duration: 1,
+                    delay: 2.2,
+                    ease: "power4.inOut"
                 });
             });
 
@@ -224,14 +241,22 @@ function Navigation({ isClick }) {
                 }
             });
 
-            itemsRef.current.forEach(el => {
+            spanRef.current.forEach(el => {
                 gsap.killTweensOf(el);
-                gsap.to(el, {
-                    opacity: 0,
+
+                gsap.to(el,{
+                    y: 122,
                     duration: 1,
-                    ease: [0.76, 0, 0.24, 1]
+                    ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
                 });
             });
+
+            timeRef.current.forEach(el => {
+                gsap.to(el, {
+                    opacity: 0,
+                    duration: 1
+                })
+            })
         }
     }, [isClick]);
 
@@ -240,49 +265,57 @@ function Navigation({ isClick }) {
         <>
             <div ref={main} className="navigation">
                 <div className="nav-text">
-                    <motion.div ref={(el) => setItemRef(el, 0)} className="navigator">
+                    <div ref={(el) => setItemRef(el, 0)} className="navigator">
                         <div className='home' />
-                        <span>HOME</span>
+                        <span ref={(el) => setSpanRef(el, 0)} >HOME</span>
                         <div className="overlay">
                             <h1 ref={firstText}>BACK TO HOME</h1>
                             <h1 ref={secondText} className='slider-text'>BACK TO HOME</h1>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div ref={(el) => setItemRef(el, 1)} className="navigator">
-                        <span>WORK</span>
+                    <div ref={(el) => setItemRef(el, 1)} className="navigator">
+                        <span ref={(el) => setSpanRef(el, 1)}>WORK</span>
                         <div className="overlay">
                             <h1 ref={thirdText}>VIEW MY WORKS</h1>
                             <h1 ref={fourText} className='slider-text'>VIEW MY WORKS</h1>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div ref={(el) => setItemRef(el, 2)} className="navigator">
-                        <span>CONTACT</span>
+                    <div ref={(el) => setItemRef(el, 2)} className="navigator">
+                        <span ref={(el) => setSpanRef(el, 2)} >CONTACT</span>
                         <div className="overlay">
                             <h1 ref={fifText}>LET'S TALK</h1>
                             <h1 ref={sixText} className='slider-text'>LET'S TALK</h1>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div ref={(el) => setItemRef(el, 3)} className="navigator">
-                        <span>ABOUT</span>
+                    <div ref={(el) => setItemRef(el, 3)} className="navigator">
+                        <span ref={(el) => setSpanRef(el, 3)}>ABOUT</span>
                         <div className="overlay">
                             <h1 ref={sevenText}>KNOW ABOUT ME</h1>
                             <h1 ref={eightText} className='slider-text'>KNOW ABOUT ME</h1>
                         </div>
-                    </motion.div>
+                    </div>
 
                 </div>
 
                 <div className="time">
                     <div className="time-main">
-                        <Magnetic>
-                            <p ref={(el) => setTimeRef(el, 0)}>&copy; Azimbek {date}</p>
-                        </Magnetic>
-                        <Magnetic>
-                            <p ref={(el) => setTimeRef(el, 1)}><i className="ri-global-line"></i> Uzbekistan {time}</p>
-                        </Magnetic>
+                        <div className="time-text-container">
+                            <div ref={(el) => setTimeRef(el, 0)} className="time-text">
+                                <Magnetic>
+                                    <p>&copy; Azimbek {date}</p>
+                                </Magnetic>
+                            </div>
+                        </div>
+                        <div className="time-text-container">
+                            <div ref={(el) => setTimeRef(el, 1)} className="time-text">
+                                <Magnetic>
+                                    <p><i className="ri-global-line"></i> Uzbekistan {time}</p>
+                                </Magnetic>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

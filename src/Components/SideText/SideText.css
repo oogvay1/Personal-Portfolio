@@ -3,19 +3,17 @@
     margin: 0 auto;
     width: 100%;
     pointer-events: none;
-    transform: translateY(-340px);
+    transform: translateY(-420px);
 }
 
 .body,
 .mask {
-    width: 100%;
     display: flex;
     align-items: start;
     justify-content: center;
     color: #000000;
-    font-size: 32px;
-    width: 300px;
-    list-style: 66px;
+    font-size: 27px;
+    transform: translateX(-650px);
     cursor: default;
     pointer-events: none;
 }
@@ -36,8 +34,13 @@
     display: block;
 }
 
+.body p {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
 .tt {
     display: inline-block;
-    height: 36px;
     overflow: hidden;
 }

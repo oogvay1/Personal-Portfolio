@@ -7,6 +7,7 @@ import BackgroundText from "./Components/BackgroundText";
 import Landing from "./Components/Landing/Landing";
 import SideText from "./Components/SideText/SideText";
 import Navigation from "./Components/Navigation/Navigation";
+import Creative from "./Components/Creative/Creative";
 
 function App() {
 
@@ -21,9 +22,7 @@ function App() {
   const sticky = useRef(null);
   const about = useRef(null);
   const btn = useRef(null);
-
-  console.log(isClick);
-
+  
   return (
     <>
       {loadingComplete && <Cursor sticky={sticky} about={about} />}
@@ -33,6 +32,7 @@ function App() {
         <section>
           <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
           <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
+          <Creative />
         </section>
 
       </main>
