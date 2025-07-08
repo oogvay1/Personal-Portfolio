@@ -1,14 +1,17 @@
+import CircularText from '../Rotate/Rotate';
 import './Creative.css'
 
 function Creative() {
 
-    const creative = useRef(null);
-    const designer = useRef(null);
-
     return (
         <>
             <div className="creative-container">
-                <h1 className="creative-text"><p ref={creative}>CREATIVE</p> <p ref={designer}>DESIGNER</p></h1>
+                <CircularText
+                    text="CONTACT WITH ME "
+                    onHover="speedUp"
+                    spinDuration={20}
+                    className="custom-class"
+                />
             </div>
         </>
     );

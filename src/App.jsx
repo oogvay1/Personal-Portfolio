@@ -31,8 +31,8 @@ function App() {
       <main>
         <section>
           <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
+          {/* <Creative /> */}
           <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
-          <Creative />
         </section>
 
       </main>
