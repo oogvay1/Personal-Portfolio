@@ -35,6 +35,10 @@ function App() {
           <Creative />
         </section>
 
+        <section>
+          
+        </section>
+
       </main>
       <Header isComplete={loadingComplete} ref={sticky} isClick={isClick} setClick={setIsClick} />
       <div className="div"></div>

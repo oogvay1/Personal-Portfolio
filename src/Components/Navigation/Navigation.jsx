@@ -263,6 +263,9 @@ function Navigation({ isClick }) {
 
     return (
         <>
+            <div className="nav-follow1"></div>
+            <div className="nav-follow1"></div>
+
             <div ref={main} className="navigation">
                 <div className="nav-text">
                     <div ref={(el) => setItemRef(el, 0)} className="navigator">
