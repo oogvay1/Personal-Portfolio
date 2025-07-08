@@ -8,6 +8,7 @@ import Landing from "./Components/Landing/Landing";
 import SideText from "./Components/SideText/SideText";
 import Navigation from "./Components/Navigation/Navigation";
 import Creative from "./Components/Creative/Creative";
+import About from "./Components/About/About";
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
         </section>
 
         <section>
-          
+          <About />
         </section>
 
       </main>

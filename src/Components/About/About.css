@@ -1,0 +1,18 @@
+.about-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-main {
+    width: 1500px;
+    height: 900px;
+    border-radius: 100px;
+    background-color: black;
+    transform: translateY(-20%);
+    z-index: 9998;
+    left: 4;
+}

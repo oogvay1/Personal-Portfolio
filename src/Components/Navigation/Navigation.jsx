@@ -92,6 +92,8 @@ function Navigation({ isClick }) {
 
     const timeRef = useRef([]);
     const spanRef = useRef([]);
+    const follow = useRef(null);
+    const follow2 = useRef(null);
 
     useEffect(() => {
         let xPercent = 0;
@@ -184,22 +186,42 @@ function Navigation({ isClick }) {
         if (el) spanRef.current[index] = el;
     };
 
+    const animate = (name, duartion) => {
+        gsap.killTweensOf(name.current)
+
+        gsap.set(name.current, {
+            y: -1050,
+            height: 640,
+            display: "block"
+        });
+
+        gsap.to(name.current, {
+            y: -7,
+            height: 1820,
+            duration: duartion,
+            ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
+        });
+    }
+
     useEffect(() => {
         if (isClick) {
             gsap.killTweensOf(main.current);
 
             gsap.set(main.current, {
-                y: -920,
-                height: 620,
+                y: -1050,
+                height: 640,
                 display: "block"
             });
 
             gsap.to(main.current, {
                 y: -7,
-                height: 1700,
+                height: 1820,
                 duration: 3,
                 ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
             });
+
+            animate(follow, 2.9);
+            animate(follow2, 2.8);
 
             spanRef.current.forEach(el => {
                 gsap.killTweensOf(el);
@@ -230,6 +252,8 @@ function Navigation({ isClick }) {
 
         } else {
             gsap.killTweensOf(main.current);
+            gsap.killTweensOf(follow.current);
+            gsap.killTweensOf(follow2.current);
 
             gsap.to(main.current, {
                 y: 1080,
@@ -244,11 +268,31 @@ function Navigation({ isClick }) {
             spanRef.current.forEach(el => {
                 gsap.killTweensOf(el);
 
-                gsap.to(el,{
+                gsap.to(el, {
                     y: 122,
                     duration: 1,
                     ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
                 });
+            });
+
+            gsap.to(follow.current, {
+                y: 1080,
+                duration: 1.5,
+                delay: 0.55,
+                ease: "power4.inOut",
+                onComplete: () => {
+                    gsap.set(follow.current, { display: "none" });
+                }
+            });
+
+            gsap.to(follow2.current, {
+                y: 1080,
+                duration: 1.5,
+                delay: 0.6,
+                ease: "power4.inOut",
+                onComplete: () => {
+                    gsap.set(follow2.current, { display: "none" });
+                }
             });
 
             timeRef.current.forEach(el => {
@@ -260,15 +304,14 @@ function Navigation({ isClick }) {
         }
     }, [isClick]);
 
-
     return (
         <>
-            <div className="nav-follow1"></div>
-            <div className="nav-follow1"></div>
+            <div ref={follow} className="nav-follow"></div>
+            <div ref={follow2} className="nav-follow1"></div>
 
             <div ref={main} className="navigation">
                 <div className="nav-text">
-                    
+
                     <div ref={(el) => setItemRef(el, 0)} className="navigator">
                         <div className='home' />
                         <span ref={(el) => setSpanRef(el, 0)} >HOME</span>
