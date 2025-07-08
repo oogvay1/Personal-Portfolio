@@ -5,12 +5,20 @@
     position: relative;
     height: 200px;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
+    height: 200px;
+    cursor: none;
+    background-color: rgb(21, 21, 21);
     font-weight: 900;
-    text-align: center;
-    cursor: pointer;
-    transform-origin: 50% 50%;
+    scale: .8;
+    translate: -680px -340px;
     -webkit-transform-origin: 50% 50%;
+    transition: all .2s ease-in-out;
+}
+
+.circular-text:hover {
+    scale: 1;
+    cursor: none;
 }
 
 .circular-text span {
@@ -20,6 +28,7 @@
     right: 0;
     top: 0;
     bottom: 0;
+    padding: 10px;
     font-size: 24px;
     transition: all 0.5s cubic-bezier(0, 0, 0, 1);
 }

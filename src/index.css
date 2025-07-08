@@ -29,7 +29,7 @@ a {
 }
 
 .container {
-    max-width: 1890px;
+    max-width: 1570px;
     margin: 0 auto;
     width: 100%;
 }
@@ -48,7 +48,7 @@ a {
 }
 
 .circa-text {
-    font-size: 460px;
+    font-size: 384px;
     width: 3000px;
     height: 100vh;
     font-weight: bold;

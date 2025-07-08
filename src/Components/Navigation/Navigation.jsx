@@ -268,6 +268,7 @@ function Navigation({ isClick }) {
 
             <div ref={main} className="navigation">
                 <div className="nav-text">
+                    
                     <div ref={(el) => setItemRef(el, 0)} className="navigator">
                         <div className='home' />
                         <span ref={(el) => setSpanRef(el, 0)} >HOME</span>

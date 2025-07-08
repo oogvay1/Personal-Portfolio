@@ -3,17 +3,18 @@
     margin: 0 auto;
     width: 100%;
     pointer-events: none;
-    transform: translateY(-420px);
+    transform: translateY(-320px);
 }
 
 .body,
 .mask {
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: start;
     color: #000000;
     font-size: 27px;
-    transform: translateX(-650px);
+    padding: 20px;
+    /* transform: translateX(-650px); */
     cursor: default;
     pointer-events: none;
 }
