@@ -11,11 +11,12 @@ function About() {
 
     useEffect(() => {
         gsap.to(main.current, {
-            scale: 1.29,
+            scale: 2,
+            borderRadius: 15,
             ease: "power4.inOut",
             scrollTrigger: {
                 trigger: main.current,
-                start: "bottom bottom",
+                start: "top bottom",
                 end: "bottom top",
                 scrub: true
             },
@@ -26,7 +27,7 @@ function About() {
         <>
             <div className="about-container">
                 <div ref={main} className="about-main">
-
+                    
                 </div>
             </div>
         </>

@@ -70,18 +70,24 @@ a {
     z-index: -1;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1600px) {
     .container {
-        max-width: 1550px;
+        max-width: 1580px;
     }
 
     .circa-text {
-        font-size: 300px;
+        font-size: 384px;
         width: 1880px;
         transform: translateY(20px);
     }
 
     .circa-text-container {
         top: 50px;
+    }
+
+    .about-main {
+        transform: translateY(-100%);
+        width: 800px !important;
+        height: 600px !important;
     }
 }
