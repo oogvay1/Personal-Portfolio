@@ -57,6 +57,7 @@ a {
     text-transform: uppercase;
     transform-origin: top;
     pointer-events: none;
+    color: #1a1a1a;
     will-change: transform;
     transform: translateY(60px);
     clip-path: polygon(0 0, 100% 1%, 100% 40%, 0 40%);

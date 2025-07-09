@@ -199,7 +199,7 @@ function Navigation({ isClick }) {
             y: -7,
             height: 1820,
             duration: duartion,
-            ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
+            ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.041 0.173,0.137 0.173,0.116 0.179,0.215 0.33,0.256 0.509,0.285 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
         });
     }
 
@@ -220,8 +220,8 @@ function Navigation({ isClick }) {
                 ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
             });
 
-            animate(follow, 2.9);
-            animate(follow2, 2.8);
+            animate(follow, 2.98);
+            animate(follow2, 2.94);
 
             spanRef.current.forEach(el => {
                 gsap.killTweensOf(el);
@@ -278,7 +278,7 @@ function Navigation({ isClick }) {
             gsap.to(follow.current, {
                 y: 1080,
                 duration: 1.5,
-                delay: 0.55,
+                delay: 0.54,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow.current, { display: "none" });
@@ -288,7 +288,7 @@ function Navigation({ isClick }) {
             gsap.to(follow2.current, {
                 y: 1080,
                 duration: 1.5,
-                delay: 0.6,
+                delay: 0.58,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow2.current, { display: "none" });
