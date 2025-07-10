@@ -1,68 +1,49 @@
 import { useEffect, useRef } from 'react';
-import './About.css'
+import { ScrollTrigger } from 'gsap/all';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './About.css'
 
 gsap.registerPlugin(ScrollTrigger);
 
 function About() {
 
-    const main = useRef(null);
-    const text = useRef(null);
-    const textContainer = useRef(null);
+    const first = useRef(null);
+    const second = useRef(null);
 
     useEffect(() => {
-        gsap.to(main.current, {
-            width: 1928,
-            height: 1100,
-            y: -50,
-            borderRadius: 20,
-            ease: "power4.inOut",
-            scrollTrigger: {
-                trigger: main.current,
-                start: "200px center",
-                end: "1100px top",
-                scrub: true
-            },
-        });
+        gsap.set([first.current, second.current], { y: 200 })
 
-        gsap.set(text.current, {
-            y: 200
+        const anim = gsap.to([first.current, second.current], { y: 0, paused: true });
+
+        ScrollTrigger.create({
+            trigger: [first.current, second.current],
+            start: "center center",
+            onEnter: () => anim.play()
         })
 
-        gsap.to(text.current, {
-            y: 0,
-            ease: "power4.inOut",
-            scrollTrigger: {
-                trigger: text.current,
-                start: "200px center",
-                end: "1000px top",
-                scrub: true
-            }
-        });;
-
-        gsap.to(textContainer.current, {
-            height: 250,
-            ease: "power4.inOut",
-            scrollTrigger: {
-                trigger: textContainer.current,
-                start: "200px center",
-                end: "1000px top",
-                scrub: true
-            }
+        ScrollTrigger.create({
+            trigger: [first.current, second.current],
+            start: "top bottom",
+            onLeaveBack: () => anim.pause(0)
         });
-    }, [])
+
+    }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>
-            <div className="sticky-container">
-
-                <div ref={main} className="about-main">
-                    <div ref={textContainer} className="text_container">
-                        <h1 ref={text} >DEVELOPER</h1>
-                    </div>
+            <div className="about__container">
+                <div>
+                    <h1 className='about__span'>
+                        <span ref={first}>Simple Ideas</span>
+                    </h1>
+                    <h1 className='about__span'>
+                        <span ref={second}>Bold Results</span>
+                    </h1>
                 </div>
-
             </div>
         </>
     );
