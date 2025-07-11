@@ -30,3 +30,32 @@
     display: flex;
     align-items: center;
 }
+
+.about-me-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
+    padding: 20px;
+    transform: translateY(20px);
+}
+
+.about-me-text p {
+    width: 600px;
+}
+
+.about-me-text button {
+    width: 600px;
+    height: 200px;
+    cursor: none;
+    background-color: black;
+    font-size: 70px;
+    border: none;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center;
+    transform: translateY(120px);
+    transition: all .2s ease-in-out;
+}

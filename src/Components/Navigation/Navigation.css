@@ -6,7 +6,7 @@
     z-index: 9997;
     position: fixed;
     color: #ffffff;
-    background-color: #000000;
+    background-color: #000;
 }
 
 .nav-text {
@@ -146,7 +146,7 @@
     z-index: 9997;
     top: 0;
     left: 0;
-    background: #262626;
+    background: #484848;
 }
 
 .nav-follow1 {
@@ -156,5 +156,5 @@
     top: 0;
     left: 0;
     position: fixed;
-    background: #414141;
+    background: #9e9e9e;
 }

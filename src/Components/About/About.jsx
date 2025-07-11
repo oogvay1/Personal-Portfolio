@@ -22,40 +22,39 @@ function About() {
 
         ScrollTrigger.create({
             trigger: [first.current, second.current],
-            start: "center center",
+            start: "top center",
             onEnter: () => anim.play()
         });
 
         ScrollTrigger.create({
             trigger: first.current,
-            start: "center center",
+            start: "top center",
             onEnter: () => anim2.play()
         });
 
         ScrollTrigger.create({
-            trigger: lineRef.current,
-            start: "center center",
+            trigger: first.current,
+            start: "top center",
             onEnter: () => anim3.play()
         });
 
         ScrollTrigger.create({
-            trigger: lineRef.current,
-            start: "top 100%",
-            onLeaveBack: () => anim3.pause(0)
-        });
-
-        ScrollTrigger.create({
             trigger: first.current,
-            start: "top 100%",
+            start: "top 120%",
             onLeaveBack: () => anim2.pause(0)
         });
 
         ScrollTrigger.create({
             trigger: [first.current, second.current],
-            start: "top 100%",
+            start: "top 120%",
             onLeaveBack: () => anim.pause(0)
         });
 
+        ScrollTrigger.create({
+            trigger: first.current,
+            start: "top 120%",
+            onLeaveBack: () => anim3.pause(0)
+        });
     }, []);
 
     useEffect(() => {
@@ -78,6 +77,11 @@ function About() {
                         <span ref={second}>Bold Results</span>
                     </h1>
                 </div>
+
+            </div>
+            <div className="about-me-text">
+                <button>CONTACT ME</button>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
             </div>
         </>
     );
