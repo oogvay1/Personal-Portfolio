@@ -5,9 +5,10 @@
 }
 
 .about__span_line {
-    width: 170px;
-    height: 200px;
-    transform: translateX(20px);
+    width: 0px;
+    height: 135px;
+    overflow: hidden;
+    transform: translateX(8px);
     background-color: black;
 }
 
@@ -16,6 +17,11 @@
     width: 1440px;
     line-height: 170px;
     font-size: 180px;
+}
+
+.about__container h1:nth-child(1) {
+    display: flex;
+    gap: 10px;
 }
 
 .about__span {
