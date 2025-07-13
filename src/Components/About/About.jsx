@@ -2,15 +2,20 @@ import { useEffect, useRef } from 'react';
 import { ScrollTrigger } from 'gsap/all';
 import gsap from 'gsap';
 import './About.css'
+import { SplitText } from 'gsap/SplitText';
 import CustomEase from 'gsap/CustomEase';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 function About() {
 
     const first = useRef(null);
     const second = useRef(null);
     const lineRef = useRef(null);
+    const paragraf = useRef(null);
+
+    const aboutFirst = useRef(null);
+    const aboutSecond = useRef(null);
 
     useEffect(() => {
         gsap.set([first.current, second.current], { y: 200 })
@@ -58,6 +63,40 @@ function About() {
     }, []);
 
     useEffect(() => {
+        let mySplit = new SplitText(paragraf.current, { type: "lines" });
+        let lines = mySplit.lines;
+
+        lines.forEach((line) => {
+            const wrapper = document.createElement("div");
+            line.parentNode.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        gsap.set(lines, { y: "100%" });
+
+        const anim = gsap.to(lines, {
+            y: "0%",
+            duration: 1.2,
+            ease: "power4.inOut",
+            stagger: 0.01,
+        });
+
+        ScrollTrigger.create({
+            trigger: first.current,
+            start: "top center",
+            onEnter: () => anim.play()
+        });
+
+        ScrollTrigger.create({
+            trigger: first.current,
+            start: "top 120%",
+            onLeaveBack: () => anim.pause(0)
+        });
+
+        return () => mySplit.revert();
+    }, []);
+
+    useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
@@ -80,8 +119,11 @@ function About() {
 
             </div>
             <div className="about-me-text">
-                <button>CONTACT ME</button>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
+                <button>
+                    <h1 ref={}>ABOUT ME</h1>
+                    <h1>ABOUT ME</h1>
+                </button>
+                <p ref={paragraf}>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
             </div>
         </>
     );

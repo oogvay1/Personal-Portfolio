@@ -44,6 +44,12 @@
     width: 600px;
 }
 
+.about-me-text p div {
+    line-height: 25px;
+    overflow: hidden;
+    display: block;
+}
+
 .about-me-text button {
     width: 600px;
     height: 200px;
@@ -58,4 +64,9 @@
     transform-origin: center;
     transform: translateY(120px);
     transition: all .2s ease-in-out;
+}
+
+.about-me-text button::selection {
+    background-color: #fff;
+    color: black;
 }
