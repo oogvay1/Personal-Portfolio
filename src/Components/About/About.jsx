@@ -3,7 +3,6 @@ import { ScrollTrigger } from 'gsap/all';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
 import './About.css'
-import { SplitText } from 'gsap/SplitText';
 import SplitType from 'split-type';
 import CustomEase from 'gsap/CustomEase';
 
@@ -19,7 +18,7 @@ function About() {
 
     const aboutFirst = useRef(null);
     const aboutSecond = useRef(null);
-    
+
     const aboutText = useRef(null);
     const aboutBtn = useRef(null);
 
@@ -69,7 +68,7 @@ function About() {
     }, []);
 
     useEffect(() => {
-        let mySplit = new SplitText(paragraf.current, { type: "lines" });
+        let mySplit = new SplitText(aboutText.current, { type: "lines" });
         let lines = mySplit.lines;
 
         lines.forEach((line) => {
@@ -89,7 +88,7 @@ function About() {
 
         ScrollTrigger.create({
             trigger: first.current,
-            start: "top center",
+            start: "top bottom",
             onEnter: () => anim.play()
         });
 
@@ -104,41 +103,6 @@ function About() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
-
-    useEffect(() => {
-        const split = new SplitType(aboutText.current, {
-            types: "lines",
-            lineClass: "line-about-text",
-        });
-
-        const lines = split.lines;
-        lines.forEach((line) => {
-            const wrapper = document.createElement("div");
-            wrapper.classList.add("line-about-wrapper");
-            line.parentNode.insertBefore(wrapper, line);
-            wrapper.appendChild(line);
-        });
-
-        const anim = gsap.to('.line-text', { y: "0%", duration: 1, ease: "power4.inOut", paused: true })
-
-        gsap.set(".line-text", {
-            y: "100%"
-        });
-
-        ScrollTrigger.create({
-            trigger: first.current,
-            start: "top center",
-            onEnter: () => anim.play()
-        });
-
-        ScrollTrigger.create({
-            trigger: first.current,
-            start: "top 120%",
-            onLeave: () => anim.pause(0)
-        });
-
-        return () => split.revert();
     }, []);
 
     const contact1 = useRef(null);
@@ -158,12 +122,12 @@ function About() {
             wrapper.appendChild(line);
         });
 
-        
+
         const split2 = new SplitType(contact2.current, {
             types: "chars",
             charClass: "char-about-text2",
         });
-        
+
         const chars2 = split2.chars;
         chars2.forEach((line) => {
             const wrapper = document.createElement("div");
