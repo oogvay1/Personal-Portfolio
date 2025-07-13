@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { ScrollTrigger } from 'gsap/all';
+import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
 import './About.css'
 import { SplitText } from 'gsap/SplitText';
+import SplitType from 'split-type';
 import CustomEase from 'gsap/CustomEase';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -12,10 +14,14 @@ function About() {
     const first = useRef(null);
     const second = useRef(null);
     const lineRef = useRef(null);
+
     const paragraf = useRef(null);
 
     const aboutFirst = useRef(null);
     const aboutSecond = useRef(null);
+    
+    const aboutText = useRef(null);
+    const aboutBtn = useRef(null);
 
     useEffect(() => {
         gsap.set([first.current, second.current], { y: 200 })
@@ -100,6 +106,97 @@ function About() {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        const split = new SplitType(aboutText.current, {
+            types: "lines",
+            lineClass: "line-about-text",
+        });
+
+        const lines = split.lines;
+        lines.forEach((line) => {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("line-about-wrapper");
+            line.parentNode.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        const anim = gsap.to('.line-text', { y: "0%", duration: 1, ease: "power4.inOut", paused: true })
+
+        gsap.set(".line-text", {
+            y: "100%"
+        });
+
+        ScrollTrigger.create({
+            trigger: first.current,
+            start: "top center",
+            onEnter: () => anim.play()
+        });
+
+        ScrollTrigger.create({
+            trigger: first.current,
+            start: "top 120%",
+            onLeave: () => anim.pause(0)
+        });
+
+        return () => split.revert();
+    }, []);
+
+    const contact1 = useRef(null);
+    const contact2 = useRef(null);
+
+    useEffect(() => {
+        const split = new SplitType(contact1.current, {
+            types: "chars",
+            charClass: "char-about-text",
+        });
+
+        const chars = split.chars;
+        chars.forEach((line) => {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("char-about-wrapper");
+            line.parentNode.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        
+        const split2 = new SplitType(contact2.current, {
+            types: "chars",
+            charClass: "char-about-text2",
+        });
+        
+        const chars2 = split2.chars;
+        chars2.forEach((line) => {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("char-about-wrapper2");
+            line.parentNode.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        gsap.set(".char-about-wrapper", {
+            y: 124
+        });
+
+        gsap.set(".char-about-wrapper2", {
+            y: -95
+        });
+
+        const anim = gsap.to('.char-about-wrapper', { y: -7, duration: .4, ease: "power4.inOut", stagger: .02, paused: true })
+        const anim2 = gsap.to('.char-about-wrapper2', { y: -240, duration: .4, ease: "power4.inOut", stagger: .02, paused: true })
+
+
+        aboutBtn.current.addEventListener("mouseenter", () => anim.play());
+        aboutBtn.current.addEventListener("mouseleave", () => anim.reverse());
+        aboutBtn.current.addEventListener("mouseenter", () => anim2.play());
+        aboutBtn.current.addEventListener("mouseleave", () => anim2.reverse());
+
+        return () => {
+            aboutBtn.current.removeEventListener("mouseenter", () => anim.play());
+            aboutBtn.current.removeEventListener("mouseleave", () => anim.reverse());
+            aboutBtn.current.removeEventListener("mouseenter", () => anim2.play());
+            aboutBtn.current.removeEventListener("mouseleave", () => anim2.reverse());
+        }
+    }, [])
+
     return (
         <>
             <div className="about__container">
@@ -119,11 +216,13 @@ function About() {
 
             </div>
             <div className="about-me-text">
-                <button>
-                    <h1 ref={}>ABOUT ME</h1>
-                    <h1>ABOUT ME</h1>
+                <button ref={aboutBtn} className='about-button'>
+                    <div className="button-text-container">
+                        <h1 className='contact1' ref={contact1}>CONTACT ME</h1>
+                        <h1 className='contact2' ref={contact2}>CONTACT ME</h1>
+                    </div>
                 </button>
-                <p ref={paragraf}>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
+                <p ref={aboutText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
             </div>
         </>
     );

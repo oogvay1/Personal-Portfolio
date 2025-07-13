@@ -37,7 +37,6 @@
     width: 100%;
     font-size: 20px;
     padding: 20px;
-    transform: translateY(20px);
 }
 
 .about-me-text p {
@@ -53,20 +52,63 @@
 .about-me-text button {
     width: 600px;
     height: 200px;
+}
+
+.about-button {
+    width: 620px;
+    height: 180px;
     cursor: none;
     background-color: black;
-    font-size: 70px;
+    font-size: 60px;
     border: none;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform-origin: center;
-    transform: translateY(120px);
+    transform: translateY(90px);
     transition: all .2s ease-in-out;
 }
 
 .about-me-text button::selection {
     background-color: #fff;
     color: black;
+}
+
+.about-button h1 {
+    background-color: transparent;
+}
+
+.about-button h1::selection {
+    background-color: #fff;
+    color: #000;
+}
+
+.line-about-wrapper {
+    height: 27px;
+    overflow: hidden;
+}
+
+.button-text-container {
+    height: 90px;
+    overflow: hidden;
+}
+
+.contact1,
+.contact2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+}
+
+.char-about-wrapper,
+.char-about-wrapper2 {
+    height: 88px;
+    overflow: hidden;
+}
+
+.contact1 .char-about-wrapper:nth-child(7),
+.contact2 .char-about-wrapper2:nth-child(7) {
+    display: block;
+    margin-right: 30px;
 }
