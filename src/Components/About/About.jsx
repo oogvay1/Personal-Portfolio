@@ -188,6 +188,11 @@ function About() {
                 </button>
                 <p ref={aboutText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
             </div>
+
+            <div class="distorted-image">
+                <img src="your-image.jpg" alt="Distorted Image" />
+            </div>
+
         </>
     );
 }
