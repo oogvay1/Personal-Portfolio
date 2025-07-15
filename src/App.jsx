@@ -9,12 +9,29 @@ import SideText from "./Components/SideText/SideText";
 import Navigation from "./Components/Navigation/Navigation";
 import Creative from "./Components/Creative/Creative";
 import About from "./Components/About/About";
+import Screw from "./Components/Screw/Screw";
+import Work from "./Components/Work/Work";
 
 function App() {
 
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
+  useEffect(() => {
+
+    const lenis = new Lenis({
+      smooth: true,
+      lerp: 0.1,
+    })
+
+    window.lenis = lenis
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => lenis.destroy()
+  }, [])
 
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [isHover, setIsHover] = useState(false);
@@ -23,7 +40,7 @@ function App() {
   const sticky = useRef(null);
   const about = useRef(null);
   const btn = useRef(null);
-  
+
   return (
     <>
       {loadingComplete && <Cursor sticky={sticky} about={about} />}
@@ -38,6 +55,10 @@ function App() {
 
         <section>
           <About />
+        </section>
+
+        <section>
+          <Work />
         </section>
 
       </main>
