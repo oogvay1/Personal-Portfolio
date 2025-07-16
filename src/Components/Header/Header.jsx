@@ -21,7 +21,7 @@ const Header = forwardRef(function Header(props, ref) {
 
         gsap.to(slider.current, {
             scrollTrigger: {
-                trigger: document.html,
+                trigger: document.body,
                 start: "top top",
                 end: "bottom bottom",
                 scrub: .25,
