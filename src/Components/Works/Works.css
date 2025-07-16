@@ -1,0 +1,25 @@
+.works-container {
+    height: 1000px;
+}
+
+.works-title {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.works-title h1 {
+    height: 295px;
+    font-size: 300px;
+    font-weight: 800;
+}
+
+.works-title span {
+    font-size: 100px;
+}
+
+.works-imgs img {
+    width: 600px;
+}

@@ -163,30 +163,32 @@ function About() {
 
     return (
         <>
-            <div className="about__container">
-                <div>
-                    <h1 className='about__span'>
-                        <div ref={lineRef} className="about__span_line">
-                            <video autoPlay muted loop>
-                                <source src='src/assets/ace4939aefe5a2c294d49273022c3503.mp4' type='video/mp4' />
-                            </video>
-                        </div>
-                        <span ref={first}>Simple Ideas</span>
-                    </h1>
-                    <h1 className='about__span'>
-                        <span ref={second}>Bold Results</span>
-                    </h1>
-                </div>
-
-            </div>
-            <div className="about-me-text">
-                <button ref={aboutBtn} className='about-button'>
-                    <div className="button-text-container">
-                        <h1 className='contact1' ref={contact1}>CONTACT ME</h1>
-                        <h1 className='contact2' ref={contact2}>CONTACT ME</h1>
+            <div className="about-main-container">
+                <div className="about__container">
+                    <div>
+                        <h1 className='about__span'>
+                            <div ref={lineRef} className="about__span_line">
+                                <video autoPlay muted loop>
+                                    <source src='src/assets/ace4939aefe5a2c294d49273022c3503.mp4' type='video/mp4' />
+                                </video>
+                            </div>
+                            <span ref={first}>Simple Ideas</span>
+                        </h1>
+                        <h1 className='about__span'>
+                            <span ref={second}>Bold Results</span>
+                        </h1>
                     </div>
-                </button>
-                <p ref={aboutText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
+
+                </div>
+                <div className="about-me-text">
+                    <button ref={aboutBtn} className='about-button'>
+                        <div className="button-text-container">
+                            <h1 className='contact1' ref={contact1}>CONTACT ME</h1>
+                            <h1 className='contact2' ref={contact2}>CONTACT ME</h1>
+                        </div>
+                    </button>
+                    <p ref={aboutText}>Lorem ipsum dolor sit amet consectetur adipisicing elit. At optio unde voluptatibus ex. Consequuntur adipisci similique perspiciatis? Cupiditate mollitia expedita error magnam illo accusantium nemo consequatur blanditiis, quaerat ex, quia asperiores enim cumque officiis, explicabo qui fuga iure modi laudantium!</p>
+                </div>
             </div>
         </>
     );

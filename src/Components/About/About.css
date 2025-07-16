@@ -1,3 +1,8 @@
+.about-main-container {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
 .about__container {
     height: 500px;
     display: flex;
@@ -17,6 +22,7 @@
     width: 1440px;
     line-height: 170px;
     font-size: 180px;
+    font-weight: 800;
 }
 
 .about__container h1:nth-child(1) {
@@ -35,8 +41,10 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    padding: 10px;
     font-size: 20px;
-    padding: 20px;
+    max-width: 1920px;
+    margin: 0 auto;
 }
 
 .about-me-text p {

@@ -9,6 +9,7 @@ import SideText from "./Components/SideText/SideText";
 import Navigation from "./Components/Navigation/Navigation";
 import Creative from "./Components/Creative/Creative";
 import About from "./Components/About/About";
+import Works from "./Components/Works/Works";
 
 function App() {
 
@@ -38,6 +39,10 @@ function App() {
 
         <section>
           <About />
+        </section>
+
+        <section>
+          <Works />
         </section>
 
       </main>
