@@ -1,5 +1,7 @@
 .works-container {
-    height: 1000px;
+    height: 3000px;
+    display: flex;
+    align-items: center;
 }
 
 .works-title {
@@ -22,4 +24,13 @@
 
 .works-imgs img {
     width: 600px;
+}
+
+.screw-img-container {
+    width: 700px;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

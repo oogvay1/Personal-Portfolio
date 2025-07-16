@@ -12,6 +12,7 @@ import About from "./Components/About/About";
 
 import Screw from "./Components/Screw/Screw";
 import Work from "./Components/Work/Work";
+import Works from "./Components/Works/Works";
 
 function App() {
 
@@ -56,6 +57,10 @@ function App() {
 
         <section>
           <About />
+        </section>
+
+        <section>
+          <Works />
         </section>
 
       </main>
