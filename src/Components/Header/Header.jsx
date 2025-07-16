@@ -94,6 +94,8 @@ const Header = forwardRef(function Header(props, ref) {
                             </div>
                         </Magnetic>
 
+                        <p>twitter</p>
+
                         <div className="header-menu">
                             <Framer>
                                 <div data-line={props.isClick ? "true" : "false"} ref={ref} onClick={handleClick} className="menu-lines">

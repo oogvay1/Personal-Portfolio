@@ -32,13 +32,11 @@ export default function Screw({ src }) {
     }, [])
 
     return (
-        <div className="screw-img-container">
-            <img
-                className="skew-img"
-                src={src}
-                alt="Skewed"
-                ref={imgRef}
-            />
-        </div>
+        <img
+            className="skew-img"
+            src={src}
+            alt="Skewed"
+            ref={imgRef}
+        />
     )
 }

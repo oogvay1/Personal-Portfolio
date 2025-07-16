@@ -21,6 +21,7 @@ function App() {
     const lenis = new Lenis({
       smooth: true,
       lerp: 0.1,
+      wheelMultiplier: .7,
     })
 
     window.lenis = lenis
