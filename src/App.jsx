@@ -43,10 +43,11 @@ function App() {
   const sticky = useRef(null);
   const about = useRef(null);
   const btn = useRef(null);
+  const imgList = useRef([]);
 
   return (
     <>
-      {loadingComplete && <Cursor sticky={sticky} about={about} />}
+      {loadingComplete && <Cursor sticky={sticky} about={about} img={imgList} />}
       <Spline />
 
       <main>
@@ -61,7 +62,7 @@ function App() {
         </section>
 
         <section>
-          <Works />
+          <Works ref={imgList} />
         </section>
 
       </main>

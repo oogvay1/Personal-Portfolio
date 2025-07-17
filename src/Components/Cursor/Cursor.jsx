@@ -2,9 +2,10 @@ import './Cursor.css'
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, transform, animate } from 'framer-motion';
 
-export default function Cursor({ sticky, about, hover, }) {
+export default function Cursor({ sticky, about, hover, img }) {
 
     const [isHovered, setIsHovered] = useState(false);
+    const [imgHover, setImgHover]
     const cursor = useRef(null);
     const cursorSize = isHovered ? 60 : 21;
 
@@ -81,7 +82,7 @@ export default function Cursor({ sticky, about, hover, }) {
     }
 
     const handleEnter = () => {
-        animate(cursor.current, { scaleX: 4, scaleY: 4 }, { duration: 0.2 });
+        gsap.to(cursor.current, { width: 200, height: 200 });
     };
 
     const handleLeave = () => {
@@ -101,6 +102,33 @@ export default function Cursor({ sticky, about, hover, }) {
             el.removeEventListener("mouseleave", handleLeave);
         };
     }, []);
+
+    const imgEnter = () => {
+        cursorSize = 60;
+    }
+
+    const imgLeave = () => {
+        cursorSize = 60
+    }
+
+    useEffect(() => {
+        if (!img || !img.current) return;
+
+        const elements = img.current.filter(Boolean);
+        console.log("Elements:", elements);
+
+        elements.forEach(el => {
+            el.addEventListener("mouseenter", imgEnter);
+            el.addEventListener("mouseleave", imgLeave);
+        });
+
+        return () => {
+            elements.forEach(el => {
+                el.removeEventListener("mouseenter", imgEnter);
+                el.removeEventListener("mouseleave", imgLeave);
+            });
+        };
+    }, [img]);
 
 
     return (
