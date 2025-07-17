@@ -41,9 +41,10 @@
     overflow: hidden;
     display: flex;
     margin: 5px;
+    gap: 14px;
     transform: translateY(100px);
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
 }
 
 .screw-l {
@@ -52,8 +53,15 @@
     height: 400px;
     overflow: hidden;
     display: flex;
+    gap: 14px;
+    flex-direction: column;
     margin: 65px 65px 200px 65px;
     transform: translateY(200px);
     justify-content: center;
+}
+
+.project-date {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
