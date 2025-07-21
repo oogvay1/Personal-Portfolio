@@ -11,8 +11,7 @@ const getRotationTransition = (duration, from, loop = true) => ({
     repeat: loop ? Infinity : 0,
 });
 
-const getTransition = (duration, from) => ({
-    rotate: getRotationTransition(duration, from),
+const getTransition = (duratio  ion(duration, from),
     scale: {
         type: "spring",
         damping: 20,
