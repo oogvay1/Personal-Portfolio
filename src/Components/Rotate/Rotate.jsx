@@ -102,11 +102,14 @@ const CircularText = ({
                 const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
                 return (
-                    <span key={i} style={{ transform, WebkitTransform: transform }}>
-                        {letter}
-                    </span>
+                    <>
+                        <span className="spannn" key={i} style={{ transform, WebkitTransform: transform }}>
+                            <p>{letter}</p>
+                        </span>
+                    </>
                 );
             })}
+            <i class="ri-arrow-right-line rotate-arrow"></i>
         </motion.div>
     );
 };

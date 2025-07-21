@@ -4,14 +4,11 @@
     width: 200px;
     position: relative;
     height: 200px;
-    font-weight: bold;
     color: #ffffff;
     height: 200px;
     cursor: none;
     background-color: rgb(21, 21, 21);
-    font-weight: 900;
     scale: .8;
-    translate: -680px -340px;
     -webkit-transform-origin: 50% 50%;
     transition: all .2s ease-in-out;
 }
@@ -21,7 +18,7 @@
     cursor: none;
 }
 
-.circular-text span {
+.spannn {
     position: absolute;
     display: inline-block;
     left: 0;
@@ -29,6 +26,16 @@
     top: 0;
     bottom: 0;
     padding: 10px;
-    font-size: 24px;
+    font-weight: 400;
     transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+}
+
+.spannn p {
+    font-size: 16px;
+}
+
+.rotate-arrow {
+    font-size: 80px;
+    position: absolute;
+    left: 40px;
 }

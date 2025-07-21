@@ -3,13 +3,13 @@ import Cursor from "./Components/Cursor/Cursor";
 import Header from "./Components/Header/Header";
 import Spline from './Components/Spline/Spline'
 import Lenis from "lenis";
+import Rotate from './Components/Rotate/Rotate'
 import BackgroundText from "./Components/BackgroundText";
 import Landing from "./Components/Landing/Landing";
 import SideText from "./Components/SideText/SideText";
 import Navigation from "./Components/Navigation/Navigation";
 import Creative from "./Components/Creative/Creative";
 import About from "./Components/About/About";
-
 import Screw from "./Components/Screw/Screw";
 import Work from "./Components/Work/Work";
 import Works from "./Components/Works/Works";

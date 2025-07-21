@@ -1,13 +1,14 @@
 import './Cursor.css'
+import Rotate from '../Rotate/Rotate'
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, transform, animate } from 'framer-motion';
 
 export default function Cursor({ sticky, about, hover, img }) {
 
     const [isHovered, setIsHovered] = useState(false);
-    const [imgHover, setImgHover]
+    const [imgHover, setImgHover] = useState(false);
     const cursor = useRef(null);
-    const cursorSize = isHovered ? 60 : 21;
+    const cursorSize = isHovered ? 60 : imgHover ? 80 : 21;
 
     const mouse = {
         x: useMotionValue(0),
@@ -104,11 +105,11 @@ export default function Cursor({ sticky, about, hover, img }) {
     }, []);
 
     const imgEnter = () => {
-        cursorSize = 60;
+        setImgHover(true);
     }
 
     const imgLeave = () => {
-        cursorSize = 60
+        setImgHover(false);
     }
 
     useEffect(() => {
@@ -140,6 +141,8 @@ export default function Cursor({ sticky, about, hover, img }) {
                     top: smoothMouse.y,
                     scaleX: scale.x,
                     scaleY: scale.y,
+                    background: imgHover ? "grey" : "white",
+                    mixBlendMode: imgHover ? "normal" : "difference",
                     opacity: (hover && 0) || 1
                 }}
                 animate={{
@@ -148,6 +151,11 @@ export default function Cursor({ sticky, about, hover, img }) {
                 }}
                 className="cursor"
                 ref={cursor}>
+                <Rotate
+                    text="VISIT PROJECT * VISIT PROJECT * VISIT PROJECT * "
+                    onHover="speedUp"
+                    spinDuration={20}
+                />
             </motion.div>
         </div>
     )

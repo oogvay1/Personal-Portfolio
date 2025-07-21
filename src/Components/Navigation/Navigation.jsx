@@ -256,7 +256,8 @@ function Navigation({ isClick }) {
             gsap.killTweensOf(follow2.current);
 
             gsap.to(main.current, {
-                y: 1080,
+                y: -1050,
+                height: 500,
                 duration: 1.5,
                 delay: 0.5,
                 ease: "power4.inOut",
@@ -276,9 +277,10 @@ function Navigation({ isClick }) {
             });
 
             gsap.to(follow.current, {
-                y: 1080,
+                y: -1050,
+                height: 500,
                 duration: 1.5,
-                delay: 0.54,
+                delay: 0.52,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow.current, { display: "none" });
@@ -286,9 +288,10 @@ function Navigation({ isClick }) {
             });
 
             gsap.to(follow2.current, {
-                y: 1080,
+                y: -1050,
+                height: 500,
                 duration: 1.5,
-                delay: 0.58,
+                delay: 0.54,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow2.current, { display: "none" });
