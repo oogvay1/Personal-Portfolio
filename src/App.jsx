@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Cursor from "./Components/Cursor/Cursor";
+import { Cursor } from "./Components/Cursor/Cursor";
 import Header from "./Components/Header/Header";
 import Spline from './Components/Spline/Spline'
 import Lenis from "lenis";
@@ -13,6 +13,7 @@ import About from "./Components/About/About";
 import Screw from "./Components/Screw/Screw";
 import Work from "./Components/Work/Work";
 import Works from "./Components/Works/Works";
+import MyGoal from "./Components/MyGoal/MyGoal";
 
 function App() {
 
@@ -61,8 +62,12 @@ function App() {
           <About />
         </section>
 
-        <section>
+        <section className="work-section">
           <Works ref={imgList} />
+        </section>
+
+        <section>
+          <MyGoal />
         </section>
 
       </main>
@@ -74,4 +79,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

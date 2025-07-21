@@ -3,7 +3,7 @@ import Rotate from '../Rotate/Rotate'
 import { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring, transform, animate } from 'framer-motion';
 
-export default function Cursor({ sticky, about, hover, img }) {
+export function Cursor({ sticky, about, hover, img }) {
 
     const [isHovered, setIsHovered] = useState(false);
     const [imgHover, setImgHover] = useState(false);
@@ -14,7 +14,7 @@ export default function Cursor({ sticky, about, hover, img }) {
         x: useMotionValue(0),
         y: useMotionValue(0)
     }
-
+    console.log('salom')
     const scale = {
         x: useMotionValue(1),
         y: useMotionValue(1)

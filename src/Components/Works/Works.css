@@ -37,7 +37,7 @@
 
 .screw-img-container {
     width: 780px;
-    height: 500px;
+    height: 540px;
     overflow: hidden;
     display: flex;
     margin: 5px;
@@ -50,7 +50,7 @@
 .screw-l {
     margin-top: 200px;
     width: 580px;
-    height: 400px;
+    height: 420px;
     overflow: hidden;
     display: flex;
     gap: 14px;

@@ -76,6 +76,12 @@ a {
     scale: 4;
 }
 
+.work-section {
+    height: 3700px;
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1600px) {
     .container {
         max-width: 1580px;
