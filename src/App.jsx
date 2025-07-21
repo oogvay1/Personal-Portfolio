@@ -12,6 +12,7 @@ import About from "./Components/About/About";
 import Screw from "./Components/Screw/Screw";
 import Work from "./Components/Work/Work";
 import Works from "./Components/Works/Works";
+import MyGoal from "./Components/MyGoal/MyGoal";
 
 function App() {
 
@@ -60,8 +61,12 @@ function App() {
           <About />
         </section>
 
-        <section>
+        <section className="work-section">
           <Works ref={imgList} />
+        </section>
+
+        <section>
+          <MyGoal />
         </section>
 
       </main>
