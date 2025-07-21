@@ -8,13 +8,13 @@ export function Cursor({ sticky, about, hover, img }) {
     const [isHovered, setIsHovered] = useState(false);
     const [imgHover, setImgHover] = useState(false);
     const cursor = useRef(null);
-    const cursorSize = isHovered ? 60 : imgHover ? 80 : 21;
+    const cursorSize = isHovered ? 60 : imgHover ? 155 : 21;
 
     const mouse = {
         x: useMotionValue(0),
         y: useMotionValue(0)
     }
-    console.log('salom')
+
     const scale = {
         x: useMotionValue(1),
         y: useMotionValue(1)
@@ -133,30 +133,35 @@ export function Cursor({ sticky, about, hover, img }) {
 
 
     return (
-        <div className="cursorContainer">
-            <motion.div
-                transformTemplate={template}
-                style={{
-                    left: smoothMouse.x,
-                    top: smoothMouse.y,
-                    scaleX: scale.x,
-                    scaleY: scale.y,
-                    background: imgHover ? "grey" : "white",
-                    mixBlendMode: imgHover ? "normal" : "difference",
-                    opacity: (hover && 0) || 1
-                }}
-                animate={{
-                    width: cursorSize,
-                    height: cursorSize
-                }}
-                className="cursor"
-                ref={cursor}>
-                <Rotate
-                    text="VISIT PROJECT * VISIT PROJECT * VISIT PROJECT * "
-                    onHover="speedUp"
-                    spinDuration={20}
-                />
-            </motion.div>
-        </div>
+        <>
+            <div className="cursorContainer">
+                <motion.div
+                    transformTemplate={template}
+                    style={{
+                        left: smoothMouse.x,
+                        top: smoothMouse.y,
+                        scaleX: scale.x,
+                        scaleY: scale.y,
+                        background: imgHover ? "white" : "white",
+                        mixBlendMode: imgHover ? "normal" : "difference",
+                        opacity: (hover && 0) || 1
+                    }}
+                    animate={{
+                        width: cursorSize,
+                        height: cursorSize
+                    }}
+                    className="cursor"
+                    ref={cursor}>
+                    <Rotate
+                        text="VISIT PROJECT * VISIT PROJECT * VISIT PROJECT * "
+                        onHover="speedUp"
+                        spinDuration={20}
+                        className='rotatee'
+                    />
+                    <i class="ri-arrow-right-line rotate-arrow"></i>
+
+                </motion.div>
+            </div>
+        </>
     )
 }

@@ -86,31 +86,32 @@ const CircularText = ({
     };
 
     return (
-        <motion.div
-            className={`circular-text ${className}`}
-            style={{ rotate: rotation, cursor: "none" }}
-            initial={{ rotate: 0 }}
-            animate={controls}
-            onMouseEnter={handleHoverStart}
-            onMouseLeave={handleHoverEnd}
-        >
-            {letters.map((letter, i) => {
-                const rotationDeg = (360 / letters.length) * i;
-                const factor = Math.PI / letters.length;
-                const x = factor * i;
-                const y = factor * i;
-                const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
+        <>
+            <motion.div
+                className={`circular-text ${className}`}
+                style={{ rotate: rotation, cursor: "none" }}
+                initial={{ rotate: 0 }}
+                animate={controls}
+                onMouseEnter={handleHoverStart}
+                onMouseLeave={handleHoverEnd}
+            >
+                {letters.map((letter, i) => {
+                    const rotationDeg = (360 / letters.length) * i;
+                    const factor = Math.PI / letters.length;
+                    const x = factor * i;
+                    const y = factor * i;
+                    const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
-                return (
-                    <>
-                        <span className="spannn" key={i} style={{ transform, WebkitTransform: transform }}>
-                            <p>{letter}</p>
-                        </span>
-                    </>
-                );
-            })}
-            <i class="ri-arrow-right-line rotate-arrow"></i>
-        </motion.div>
+                    return (
+                        <>
+                            <span className="spannn" key={i} style={{ transform, WebkitTransform: transform }}>
+                                <p>{letter}</p>
+                            </span>
+                        </>
+                    );
+                })}
+            </motion.div>
+        </>
     );
 };
 
