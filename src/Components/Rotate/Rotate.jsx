@@ -25,6 +25,7 @@ const CircularText = ({
     spinDuration = 20,
     onHover = "speedUp",
     className = "",
+    isHover
 }) => {
     const letters = Array.from(text);
     const controls = useAnimation();
@@ -104,7 +105,7 @@ const CircularText = ({
 
                     return (
                         <>
-                            <span className="spannn" key={i} style={{ transform, WebkitTransform: transform }}>
+                            <span className="spannn" key={i} style={{ transform, WebkitTransform: transform, color: isHover ? "black" : "white" }}>
                                 <p>{letter}</p>
                             </span>
                         </>

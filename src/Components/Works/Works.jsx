@@ -12,7 +12,7 @@ const Works = forwardRef(function Works(props, ref) {
     useEffect(() => {
         ScrollTrigger.create({
             trigger: '#trigger',
-            start: '20% center',
+            start: '10% center',
             onEnter: () => {
                 gsap.to('body', { backgroundColor: 'black', color: 'white', duration: 0.5 });
             },

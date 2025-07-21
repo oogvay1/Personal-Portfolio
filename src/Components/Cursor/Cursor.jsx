@@ -156,6 +156,7 @@ export function Cursor({ sticky, about, hover, img }) {
                         text="VISIT PROJECT * VISIT PROJECT * VISIT PROJECT * "
                         onHover="speedUp"
                         spinDuration={20}
+                        isHover={imgHover}
                         className='rotatee'
                     />
                     <i class="ri-arrow-right-line rotate-arrow"></i>
