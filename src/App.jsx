@@ -49,16 +49,16 @@ function App() {
   return (
     <>
       {loadingComplete && <Cursor sticky={sticky} about={about} img={imgList} />}
-      <Spline />
 
       <main>
-        <section>
+        <section className="hero-section">
+          <Spline />
           <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
           {/* <Creative /> */}
           <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
         </section>
 
-        <section>
+        <section className="about-section">
           <About />
         </section>
 

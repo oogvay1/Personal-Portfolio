@@ -7,7 +7,7 @@ function MyGoal() {
 
     const { x, y } = useMousePosition();
     const [isHovered, setIsHovered] = useState(false);
-    const size = isHovered ? 400 : 40;
+    const size = isHovered ? 400 : 0;
 
     return (
         <>
@@ -22,15 +22,13 @@ function MyGoal() {
                     transition={{ type: "tween", ease: "backOut" }}
                 >
                     <p>
-                        Detail-driven.
-                        I design bold, expressive interfaces&really good shit —
-                        if the payment is equally good
+                        I build full-stack websites from scratch for agencies and individuals — if the effort matches the reward.
                     </p>
                 </motion.div>
 
                 <p onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
                     className='main-text-mask'>
-                    
+                    Creative in front-end and back-end, using cutting-edge tech built to last — not to be rewritten.
                 </p>
             </div>
         </>

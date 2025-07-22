@@ -12,8 +12,10 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 120px;
+    font-size: 100px;
     line-height: 110px;
+    padding: 20px;
+    text-indent: 9rem;
 }
 
 .mask {

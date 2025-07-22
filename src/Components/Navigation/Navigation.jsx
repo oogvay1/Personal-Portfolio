@@ -217,11 +217,11 @@ function Navigation({ isClick }) {
                 y: -7,
                 height: 1820,
                 duration: 3,
-                ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.18,0.277 0.33,0.318 0.509,0.347 0.473,0.329 0.555,0.382 0.633,0.481 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
+                ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.178,0.285 0.33,0.318 0.512,0.325 0.522,0.319 0.57,0.35 0.673,0.418 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
             });
 
-            animate(follow, 2.98);
-            animate(follow2, 2.94);
+            animate(follow, 2.8);
+            animate(follow2, 2.4);
 
             spanRef.current.forEach(el => {
                 gsap.killTweensOf(el);
@@ -243,9 +243,9 @@ function Navigation({ isClick }) {
 
                 gsap.to(el, {
                     opacity: 1,
-                    y: 0,
+                    y: -5,
                     duration: 1,
-                    delay: 2.2,
+                    delay: 2.3  ,
                     ease: "power4.inOut"
                 });
             });
@@ -280,7 +280,7 @@ function Navigation({ isClick }) {
                 y: -1050,
                 height: 500,
                 duration: 1.5,
-                delay: 0.52,
+                delay: 0.1,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow.current, { display: "none" });
@@ -291,7 +291,7 @@ function Navigation({ isClick }) {
                 y: -1050,
                 height: 500,
                 duration: 1.5,
-                delay: 0.54,
+                delay: 0.1,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow2.current, { display: "none" });
@@ -354,16 +354,24 @@ function Navigation({ isClick }) {
                     <div className="time-main">
                         <div className="time-text-container">
                             <div ref={(el) => setTimeRef(el, 0)} className="time-text">
-                                <Magnetic>
-                                    <p>&copy; Azimbek {date}</p>
-                                </Magnetic>
+                                <p className='global-time-p'>&copy; {date}</p>
                             </div>
                         </div>
+
+                        <ul>
+                            <li><a href="https://x.com/home" target='_blank'>Twitter</a></li>
+                            <li><a href="#">Instragram</a></li>
+                            <li><a href="https://www.behance.net/azimbekalibekov1" target='_blank'>Behance</a></li>
+                            <li><a href="https://dribbble.com/azimbek-alibekov" target='_blank'>Dribbble</a></li>
+                        </ul>
+
+                        <div className="navigation-location">
+                            <p><a href="https://maps.app.goo.gl/7tJJFpnyab2xQu5w6" target='_blank'>322, Samarkand st., Yangiyol, Uzbekistan</a></p>
+                        </div>
+
                         <div className="time-text-container">
                             <div ref={(el) => setTimeRef(el, 1)} className="time-text">
-                                <Magnetic>
-                                    <p><i className="ri-global-line"></i> Uzbekistan {time}</p>
-                                </Magnetic>
+                                <p className='global-time-p'><i className="ri-global-line"></i> Uzbekistan {time}</p>
                             </div>
                         </div>
                     </div>
