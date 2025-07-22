@@ -12,7 +12,6 @@ function MyGoal() {
     return (
         <>
             <div className="my-goal-cover">
-
                 <motion.div
                     className='mask'
                     animate={{

@@ -150,8 +150,8 @@ function About() {
         }
 
         const anim2 = () => {
-            gsap.to('.char-about-wrapper', { y: 0, duration: .4, ease: "power4.inOut", stagger: .02 });
-            gsap.to('.char-about-wrapper2', { y: 0, duration: .4, ease: "power4.inOut", stagger: .02 });
+            gsap.to('.char-about-wrapper', { y: 75, duration: .4, ease: "power4.inOut", stagger: .02 });
+            gsap.to('.char-about-wrapper2', { y: -95, duration: .4, ease: "power4.inOut", stagger: .02 });
         }
 
         aboutBtn.current.addEventListener("mouseenter", () => anim());
