@@ -245,7 +245,7 @@ function Navigation({ isClick }) {
                     opacity: 1,
                     y: -5,
                     duration: 1,
-                    delay: 2.3  ,
+                    delay: 2.3,
                     ease: "power4.inOut"
                 });
             });
@@ -359,18 +359,26 @@ function Navigation({ isClick }) {
                         </div>
 
                         <ul>
-                            <li><a href="https://x.com/home" target='_blank'>Twitter</a></li>
-                            <li><a href="#">Instragram</a></li>
-                            <li><a href="https://www.behance.net/azimbekalibekov1" target='_blank'>Behance</a></li>
-                            <li><a href="https://dribbble.com/azimbek-alibekov" target='_blank'>Dribbble</a></li>
+                            <div className="time-li-container">
+                                <li ref={(el) => setTimeRef(el, 1)} className='a-navigation'><a href="https://x.com/home" target='_blank'>Twitter</a></li>
+                            </div>
+                            <div className="time-li-container">
+                                <li ref={(el) => setTimeRef(el, 2)} className='a-navigation'><a href="#">Instragram</a></li>
+                            </div>
+                            <div className="time-li-container">
+                                <li ref={(el) => setTimeRef(el, 3)} className='a-navigation'><a href="https://www.behance.net/azimbekalibekov1" target='_blank'>Behance</a></li>
+                            </div>
+                            <div className="time-li-container">
+                                <li ref={(el) => setTimeRef(el, 4)} className='a-navigation'><a href="https://dribbble.com/azimbek-alibekov" target='_blank'>Dribbble</a></li>
+                            </div>
                         </ul>
 
                         <div className="navigation-location">
-                            <p><a href="https://maps.app.goo.gl/7tJJFpnyab2xQu5w6" target='_blank'>322, Samarkand st., Yangiyol, Uzbekistan</a></p>
+                            <p ref={(el) => setTimeRef(el, 5)}><a href="https://maps.app.goo.gl/7tJJFpnyab2xQu5w6" target='_blank'>322, Samarkand st., Yangiyol, Uzbekistan</a></p>
                         </div>
 
                         <div className="time-text-container">
-                            <div ref={(el) => setTimeRef(el, 1)} className="time-text">
+                            <div ref={(el) => setTimeRef(el, 6)} className="time-text">
                                 <p className='global-time-p'><i className="ri-global-line"></i> Uzbekistan {time}</p>
                             </div>
                         </div>

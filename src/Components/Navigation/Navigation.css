@@ -99,8 +99,8 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
-    width: 1590px;
-    transform: translateY(-10px);
+    width: 1900px;
+    transform: translateY(-5px);
 }
 
 .time-text-container {
@@ -112,6 +112,18 @@
 .global-time-p {
     font-size: 20px;
     position: relative;
+}
+
+.time-li-container {
+    height: 21px;
+    padding-top: 2px;
+    overflow: hidden;
+}
+
+.navigation-location {
+    height: 21px;
+    padding-top: 2px;
+    overflow: hidden;
 }
 
 .time p a,
