@@ -1,11 +1,4 @@
-.my-goal-container {
-    height: 2000px;
-    position: relative;
-    border: 2px solid white;
-}
-
 .my-goal {
-    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
