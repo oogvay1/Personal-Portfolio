@@ -1,0 +1,48 @@
+.marquee-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: end;
+    top: 0;
+    position: absolute;
+}
+
+.marquee {
+    position: relative;
+    background-color: #1a1a1a;
+    font-weight: 900;
+    font-size: 40px;
+    padding: 5px 0;
+    color: #eee;
+    overflow: hidden;
+    z-index: 999;
+    font-family: 'Anton', sans-serif;
+}
+
+.marquee-inner {
+    display: flex;
+    width: fit-content;
+    flex: auto;
+    flex-direction: row;
+}
+
+.marquee-part {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 4px;
+}
+
+.marquee-arrow {
+    margin: 0 1rem;
+    font-size: 80px;
+    font-weight: 10;
+    display: inline-block;
+    position: relative;
+    transform: rotate(180deg);
+    transition: all .5s ease-in-out;
+}
+
+.marquee-arrow.active {
+    transform: rotate(0deg);
+}
