@@ -144,20 +144,22 @@ function About() {
             y: -95
         });
 
-        const anim = gsap.to('.char-about-wrapper', { y: -7, duration: .4, ease: "power4.inOut", stagger: .02, paused: true })
-        const anim2 = gsap.to('.char-about-wrapper2', { y: -240, duration: .4, ease: "power4.inOut", stagger: .02, paused: true })
+        const anim = () => {
+            gsap.to('.char-about-wrapper', { y: -7, duration: .4, ease: "power4.inOut", stagger: .02 });
+            gsap.to('.char-about-wrapper2', { y: -240, duration: .4, ease: "power4.inOut", stagger: .02 })
+        }
 
+        const anim2 = () => {
+            gsap.to('.char-about-wrapper', { y: 75, duration: .4, ease: "power4.inOut", stagger: .02 });
+            gsap.to('.char-about-wrapper2', { y: -95, duration: .4, ease: "power4.inOut", stagger: .02 });
+        }
 
-        aboutBtn.current.addEventListener("mouseenter", () => anim.play());
-        aboutBtn.current.addEventListener("mouseleave", () => anim.reverse());
-        aboutBtn.current.addEventListener("mouseenter", () => anim2.play());
-        aboutBtn.current.addEventListener("mouseleave", () => anim2.reverse());
+        aboutBtn.current.addEventListener("mouseenter", () => anim());
+        aboutBtn.current.addEventListener("mouseleave", () => anim2());
 
         return () => {
-            aboutBtn.current.removeEventListener("mouseenter", () => anim.play());
-            aboutBtn.current.removeEventListener("mouseleave", () => anim.reverse());
-            aboutBtn.current.removeEventListener("mouseenter", () => anim2.play());
-            aboutBtn.current.removeEventListener("mouseleave", () => anim2.reverse());
+            aboutBtn.current.removeEventListener("mouseenter", () => anim());
+            aboutBtn.current.removeEventListener("mouseleave", () => anim2());
         }
     }, [])
 

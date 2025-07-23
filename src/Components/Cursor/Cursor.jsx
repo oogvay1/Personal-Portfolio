@@ -83,7 +83,7 @@ export function Cursor({ sticky, about, hover, img }) {
     }
 
     const handleEnter = () => {
-        gsap.to(cursor.current, { width: 200, height: 200 });
+        gsap.to(cursor.current, { width: "200px", height: "200px" });
     };
 
     const handleLeave = () => {

@@ -47,6 +47,12 @@
     flex-direction: column;
 }
 
+.hover-img-content {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
 .screw-l {
     margin-top: 200px;
     width: 580px;

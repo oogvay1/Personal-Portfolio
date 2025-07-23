@@ -65,9 +65,10 @@
         transform-origin: left;
     }
 
-    94% {
+    90% {
         transform: scaleX(1);
         opacity: 1;
+        transform-origin: right;
     }
 
     100% {
