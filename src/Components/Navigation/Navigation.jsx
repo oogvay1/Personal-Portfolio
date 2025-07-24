@@ -258,7 +258,7 @@ function Navigation({ isClick }) {
             gsap.to(main.current, {
                 y: -1050,
                 height: 500,
-                duration: 1.5,
+                duration: 1.7,
                 delay: 0.5,
                 ease: "power4.inOut",
                 onComplete: () => {
@@ -279,8 +279,8 @@ function Navigation({ isClick }) {
             gsap.to(follow.current, {
                 y: -1050,
                 height: 500,
-                duration: 1.5,
-                delay: 0.1,
+                duration: 1.7,
+                delay: 0.5,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow.current, { display: "none" });
@@ -290,8 +290,8 @@ function Navigation({ isClick }) {
             gsap.to(follow2.current, {
                 y: -1050,
                 height: 500,
-                duration: 1.5,
-                delay: 0.1,
+                duration: 1.7,
+                delay: 0.6,
                 ease: "power4.inOut",
                 onComplete: () => {
                     gsap.set(follow2.current, { display: "none" });

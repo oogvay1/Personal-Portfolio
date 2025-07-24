@@ -1,0 +1,16 @@
+.slider-container {
+    margin-top: 10rem;
+}
+
+.slider {
+    position: relative;
+    white-space: nowrap;
+    display: flex;
+}
+
+.slider p {
+    margin: 0px;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+}

@@ -15,6 +15,7 @@ import Work from "./Components/Work/Work";
 import Works from "./Components/Works/Works";
 import MyGoal from "./Components/MyGoal/MyGoal";
 import Marquee from "./Components/Marquee/Marquee";
+import Slider from "./Components/Slider/Slider";
 
 function App() {
 
@@ -57,7 +58,7 @@ function App() {
           <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
           {/* <Creative /> */}
           <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
-          <Marquee />
+          {/* <Marquee /> */}
         </section>
 
         <section className="about-section">
