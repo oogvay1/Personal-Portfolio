@@ -9,13 +9,14 @@
 
 .marquee {
     position: relative;
-    background-color: #1a1a1a;
+    background-color: #000;
     font-weight: 900;
     font-size: 40px;
     padding: 5px 0;
     color: #eee;
     overflow: hidden;
     z-index: 999;
+    mix-blend-mode: difference;
     font-family: 'Anton', sans-serif;
 }
 
@@ -24,6 +25,7 @@
     width: fit-content;
     flex: auto;
     flex-direction: row;
+    will-change: transform;
 }
 
 .marquee-part {

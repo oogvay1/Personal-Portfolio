@@ -5,7 +5,7 @@ import './Marquee.css';
 function Marquee() {
     const arrows = useRef([]);
     const tweenRef = useRef(null);
-    const lastScrollY = useRef(window.pageYOffset);
+    const lastScrollY = useRef(window.pageYOffset + 1);
 
     useEffect(() => {
         gsap.set('.marquee-inner', { xPercent: -50 });
@@ -18,7 +18,7 @@ function Marquee() {
         });
 
         const handleScroll = () => {
-            const scrollY = window.pageYOffset;
+            const scrollY = window.pageYOffset + 1;
             const scrollingDown = scrollY > lastScrollY.current;
 
             if (tweenRef.current) {
