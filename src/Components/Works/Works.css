@@ -29,6 +29,7 @@
 
 .works-imgs img {
     width: 780px;
+    z-index: -10;
 }
 
 .screw-l img {
@@ -37,14 +38,16 @@
 
 .screw-img-container {
     width: 780px;
-    height: 540px;
+    height: 480px;
     overflow: hidden;
     display: flex;
     margin: 5px;
     gap: 14px;
+    background-color: red;
     transform: translateY(100px);
     justify-content: center;
     flex-direction: column;
+    clip-path: "M 10,50 L 90, 50 Z";
 }
 
 .hover-img-content {
@@ -70,4 +73,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.boxx {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    margin: 10rem;
+    clip-path: path("M 10,50 L 90,50 A 10,10 0,0,0 100,40 L 100,10 A 10,10 0,0,1 110,0 L 190,0 A 10,10 0,0,1 200,10 L 200,190 A 10,10 0,0,1 190,200 L 10,200 A 10,10 0,0,1 0,190 L 0,60 A 10,10 0,0,1 10,50 Z");
 }

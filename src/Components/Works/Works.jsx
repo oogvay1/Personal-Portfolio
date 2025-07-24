@@ -50,7 +50,7 @@ const Works = forwardRef(function Works(props, ref) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="screw-l">
+                            <div className="screw-img-container">
                                 <div ref={(el) => ref.current[1] = el} className="hover-img-content">
                                     <Screw src="src/assets/Project3.png" />
                                     <div className="project-date">
@@ -59,7 +59,7 @@ const Works = forwardRef(function Works(props, ref) {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ marginBottom: "100px" }} className="screw-img-container">
+                            <div className="screw-img-container">
                                 <div ref={(el) => ref.current[2] = el} className="hover-img-content">
                                     <Screw src="src/assets/Project2.png" />
                                     <div className="project-date">
@@ -79,8 +79,6 @@ const Works = forwardRef(function Works(props, ref) {
                                     </div>
                                 </div>
                             ))} */}
-                        </div>
-                        <div className="work-container">
                             <div className="screw-img-container">
                                 <div ref={(el) => ref.current[3] = el} className="hover-img-content">
                                     <Screw src="src/assets/Project4.png" />
@@ -90,7 +88,7 @@ const Works = forwardRef(function Works(props, ref) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="screw-l">
+                            <div className="screw-img-container">
                                 <div ref={(el) => ref.current[4] = el} className="hover-img-content">
                                     <Screw src="src/assets/Project7.png" />
                                     <div className="project-date">
@@ -110,6 +108,8 @@ const Works = forwardRef(function Works(props, ref) {
                             </div>
                         </div>
                     </div>
+
+                    <div className="boxx"></div>
 
                 </div>
             </div>
