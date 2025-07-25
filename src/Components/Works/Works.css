@@ -29,7 +29,8 @@
 
 .works-imgs img {
     width: 780px;
-    z-index: -10;
+    height: 450px;
+    clip-path: path("M 0,10 A 10,10 0,0,1 10,00 L 770,0 A 10,10 0,0,1 780,10 L 780,440 A 10,10 0,0,1 770,450 L 450,450 A 10,10 0,0,1 440,440 L 440,400 A 10,10 0,0,0 430,390 L 10,390 A 10,10 0,0,1 0,380 L 0,10 Z");
 }
 
 .screw-l img {
@@ -43,11 +44,10 @@
     display: flex;
     margin: 5px;
     gap: 14px;
-    background-color: red;
     transform: translateY(100px);
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
-    clip-path: "M 10,50 L 90, 50 Z";
+    /* clip-path: path("M 0,0 L 0,0 L 00,0 L 0,0 A 10,10 0,0,1 0,0 L 770,0 A 10,10 0,0,1 780,10 L 780,470 A 10,10 0,0,1 70,480 L 10,480 A 10,10 0,0,1 0,190 L 0,60 A 10,10 0,0,1 10,50 Z"); */
 }
 
 .hover-img-content {
