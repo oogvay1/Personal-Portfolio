@@ -1,6 +1,8 @@
 .skew-img {
-    width: 840px;
     display: block;
     will-change: transform;
     transform-origin: center;
+    width: 820px;
+    height: 450px;
+    z-index: 999;
 }

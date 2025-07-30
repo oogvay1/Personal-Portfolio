@@ -1,7 +1,11 @@
 .works-container {
-    height: 3000px;
+    height: 100vh;
+    width: 320vw;
     display: flex;
     align-items: center;
+    justify-content: start;
+    will-change: transform;
+    z-index: -1;
 }
 
 .works-title {
@@ -28,26 +32,39 @@
 }
 
 .works-imgs img {
-    width: 780px;
-    height: 450px;
-    clip-path: path("M 0,10 A 10,10 0,0,1 10,00 L 770,0 A 10,10 0,0,1 780,10 L 780,440 A 10,10 0,0,1 770,450 L 450,450 A 10,10 0,0,1 440,440 L 440,400 A 10,10 0,0,0 430,390 L 10,390 A 10,10 0,0,1 0,380 L 0,10 Z");
-}
-
-.screw-l img {
-    width: 580px;
+    display: block;
+    transform-origin: center;
+    width: 820px;
+    z-index: 999;
 }
 
 .screw-img-container {
-    width: 780px;
-    height: 480px;
-    overflow: hidden;
+    display: block;
+    will-change: transform;
+    transform-origin: center;
+    width: 800px;
+    height: 450px;
+    z-index: 999;
+    margin: 0 auto;
+}
+
+.work-container {
     display: flex;
-    margin: 5px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.screw-img-container {
+    width: 820px;
+    height: 480px;
     gap: 14px;
-    transform: translateY(100px);
     justify-content: space-between;
     flex-direction: column;
-    /* clip-path: path("M 0,0 L 0,0 L 00,0 L 0,0 A 10,10 0,0,1 0,0 L 770,0 A 10,10 0,0,1 780,10 L 780,470 A 10,10 0,0,1 70,480 L 10,480 A 10,10 0,0,1 0,190 L 0,60 A 10,10 0,0,1 10,50 Z"); */
+    transition: clip-path 1s ease-in-out;
+}
+
+.screw-img-container:hover {
 }
 
 .hover-img-content {
@@ -73,12 +90,4 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.boxx {
-    width: 200px;
-    height: 200px;
-    background-color: red;
-    margin: 10rem;
-    clip-path: path("M 10,50 L 90,50 A 10,10 0,0,0 100,40 L 100,10 A 10,10 0,0,1 110,0 L 190,0 A 10,10 0,0,1 200,10 L 200,190 A 10,10 0,0,1 190,200 L 10,200 A 10,10 0,0,1 0,190 L 0,60 A 10,10 0,0,1 10,50 Z");
 }
