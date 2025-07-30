@@ -18,7 +18,7 @@ function MyGoal() {
                     <motion.div
                         className='mask'
                         animate={{
-                            webkitMaskPosition: `${x - size / 2}px ${y - (size / 2)}px`,
+                            webkitMaskPosition: `${x - size / 2}px ${y - (size / 2) - 160}px`,
                             webkitMaskSize: `${size}px`
                         }}
                         transition={{ type: "tween", ease: "backOut", duration: .5 }}

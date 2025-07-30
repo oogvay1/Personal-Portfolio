@@ -3,8 +3,7 @@
     height: 400vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-bottom: 200px;
+    align-items: start;
     margin-top: 5000px;
     margin-bottom: 3000px;
     border-radius: 30px;
