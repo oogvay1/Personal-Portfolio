@@ -25,6 +25,8 @@ function Navigation({ isClick }) {
 
     const itemsRef = useRef([]);
     const main = useRef(null);
+    const mainContent = useRef(null);
+    const gradient = useRef(null);
 
     useEffect(() => {
         itemsRef.current.forEach(item => {
@@ -161,7 +163,7 @@ function Navigation({ isClick }) {
 
         const animate = () => {
             xPercent += 0.4 * direction;
-            if (xPercent <= -124.1) {
+            if (xPercent <= -100) {
                 xPercent = 0
             }
 
@@ -204,19 +206,49 @@ function Navigation({ isClick }) {
     }
 
     useEffect(() => {
+        const tl = gsap.timeline();
+
         if (isClick) {
+
             gsap.to(main.current, {
                 height: "100vh",
                 duration: 2,
                 ease: "power4.inOut"
             });
+            gsap.to(mainContent.current, {
+                yPercent: 0,
+                duration: 2,
+                ease: "power4.inOut"
+            });
+
+            gsap.to(gradient.current, {
+                background: "#00000015",
+                opacity: 0,
+                duration: 2,
+                delay: 1
+            });
+
         } else {
+            
             gsap.to(main.current, {
                 height: "0vh",
                 duration: 2,
                 ease: "power4.inOut"
             });
+            gsap.to(mainContent.current, {
+                yPercent: 10,
+                duration: 2,
+                ease: "power4.inOut"
+            });
+
+            gsap.to(gradient.current, {
+                background: "#00000085",
+                opacity: 1,
+                duration: 1.2
+            });
+
         }
+
     }, [isClick])
 
     // useEffect(() => {
@@ -325,77 +357,78 @@ function Navigation({ isClick }) {
 
     return (
         <>
-            {/* <div ref={follow} className="nav-follow"></div>
-            <div ref={follow2} className="nav-follow1"></div> */}
 
             <div ref={main} className="navigation">
-                <div className="nav-text">
+                <div ref={gradient} className="gradient"></div>
+                <div ref={mainContent} className="navigation-content">
+                    <div className="nav-text">
 
-                    <div ref={(el) => setItemRef(el, 0)} className="navigator">
-                        <div className='home' />
-                        <span ref={(el) => setSpanRef(el, 0)} >HOME</span>
-                        <div className="overlay">
-                            <h1 ref={firstText}>BACK TO HOME</h1>
-                            <h1 ref={secondText} className='slider-text'>BACK TO HOME</h1>
+                        <div ref={(el) => setItemRef(el, 0)} className="navigator">
+                            <div className='home' />
+                            <span ref={(el) => setSpanRef(el, 0)} >HOME</span>
+                            <div className="overlay">
+                                <h1 ref={firstText}>BACK TO HOME</h1>
+                                <h1 ref={secondText} className='slider-text'>BACK TO HOME</h1>
+                            </div>
                         </div>
+
+                        <div ref={(el) => setItemRef(el, 1)} className="navigator">
+                            <span ref={(el) => setSpanRef(el, 1)}>WORK</span>
+                            <div className="overlay">
+                                <h1 ref={thirdText}>VIEW MY WORKS</h1>
+                                <h1 ref={fourText} className='slider-text'>VIEW MY WORKS</h1>
+                            </div>
+                        </div>
+
+                        <div ref={(el) => setItemRef(el, 2)} className="navigator">
+                            <span ref={(el) => setSpanRef(el, 2)} >CONTACT</span>
+                            <div className="overlay">
+                                <h1 ref={fifText}>LET'S TALK</h1>
+                                <h1 ref={sixText} className='slider-text'>LET'S TALK</h1>
+                            </div>
+                        </div>
+
+                        <div ref={(el) => setItemRef(el, 3)} className="navigator">
+                            <span ref={(el) => setSpanRef(el, 3)}>ABOUT</span>
+                            <div className="overlay">
+                                <h1 ref={sevenText}>KNOW ABOUT ME</h1>
+                                <h1 ref={eightText} className='slider-text'>KNOW ABOUT ME</h1>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div ref={(el) => setItemRef(el, 1)} className="navigator">
-                        <span ref={(el) => setSpanRef(el, 1)}>WORK</span>
-                        <div className="overlay">
-                            <h1 ref={thirdText}>VIEW MY WORKS</h1>
-                            <h1 ref={fourText} className='slider-text'>VIEW MY WORKS</h1>
-                        </div>
-                    </div>
-
-                    <div ref={(el) => setItemRef(el, 2)} className="navigator">
-                        <span ref={(el) => setSpanRef(el, 2)} >CONTACT</span>
-                        <div className="overlay">
-                            <h1 ref={fifText}>LET'S TALK</h1>
-                            <h1 ref={sixText} className='slider-text'>LET'S TALK</h1>
-                        </div>
-                    </div>
-
-                    <div ref={(el) => setItemRef(el, 3)} className="navigator">
-                        <span ref={(el) => setSpanRef(el, 3)}>ABOUT</span>
-                        <div className="overlay">
-                            <h1 ref={sevenText}>KNOW ABOUT ME</h1>
-                            <h1 ref={eightText} className='slider-text'>KNOW ABOUT ME</h1>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="time">
-                    <div className="time-main">
-                        <div className="time-text-container">
-                            <div ref={(el) => setTimeRef(el, 0)} className="time-text">
-                                <p className='global-time-p'>&copy; {date}</p>
+                    <div className="time">
+                        <div className="time-main">
+                            <div className="time-text-container">
+                                <div ref={(el) => setTimeRef(el, 0)} className="time-text">
+                                    <p className='global-time-p'>&copy; {date}</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <ul>
-                            <div className="time-li-container">
-                                <li ref={(el) => setTimeRef(el, 1)} className='a-navigation'><a href="https://x.com/home" target='_blank'>Twitter</a></li>
-                            </div>
-                            <div className="time-li-container">
-                                <li ref={(el) => setTimeRef(el, 2)} className='a-navigation'><a href="#">Instragram</a></li>
-                            </div>
-                            <div className="time-li-container">
-                                <li ref={(el) => setTimeRef(el, 3)} className='a-navigation'><a href="https://www.behance.net/azimbekalibekov1" target='_blank'>Behance</a></li>
-                            </div>
-                            <div className="time-li-container">
-                                <li ref={(el) => setTimeRef(el, 4)} className='a-navigation'><a href="https://dribbble.com/azimbek-alibekov" target='_blank'>Dribbble</a></li>
-                            </div>
-                        </ul>
+                            <ul>
+                                <div className="time-li-container">
+                                    <li ref={(el) => setTimeRef(el, 1)} className='a-navigation'><a href="https://x.com/home" target='_blank'>Twitter</a></li>
+                                </div>
+                                <div className="time-li-container">
+                                    <li ref={(el) => setTimeRef(el, 2)} className='a-navigation'><a href="#">Instragram</a></li>
+                                </div>
+                                <div className="time-li-container">
+                                    <li ref={(el) => setTimeRef(el, 3)} className='a-navigation'><a href="https://www.behance.net/azimbekalibekov1" target='_blank'>Behance</a></li>
+                                </div>
+                                <div className="time-li-container">
+                                    <li ref={(el) => setTimeRef(el, 4)} className='a-navigation'><a href="https://dribbble.com/azimbek-alibekov" target='_blank'>Dribbble</a></li>
+                                </div>
+                            </ul>
 
-                        <div className="navigation-location">
-                            <p ref={(el) => setTimeRef(el, 5)}><a href="https://maps.app.goo.gl/7tJJFpnyab2xQu5w6" target='_blank'>322, Samarkand st., Yangiyol, Uzbekistan</a></p>
-                        </div>
+                            <div className="navigation-location">
+                                <p ref={(el) => setTimeRef(el, 5)}><a href="https://maps.app.goo.gl/7tJJFpnyab2xQu5w6" target='_blank'>322, Samarkand st., Yangiyol, Uzbekistan</a></p>
+                            </div>
 
-                        <div className="time-text-container">
-                            <div ref={(el) => setTimeRef(el, 6)} className="time-text">
-                                <p className='global-time-p'><i className="ri-global-line"></i> Uzbekistan {time}</p>
+                            <div className="time-text-container">
+                                <div ref={(el) => setTimeRef(el, 6)} className="time-text">
+                                    <p className='global-time-p'><i className="ri-global-line"></i> Uzbekistan {time}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

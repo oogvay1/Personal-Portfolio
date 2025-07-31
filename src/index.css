@@ -86,6 +86,7 @@ a {
 
 main {
     overflow: hidden;
+    will-change: transform;
 }
 
 .main-content {

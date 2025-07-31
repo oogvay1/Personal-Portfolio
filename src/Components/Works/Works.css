@@ -1,18 +1,19 @@
 .works-container {
     height: 100vh;
     width: 320vw;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    will-change: transform;
+    position: relative;
+    /* ✅ Needed for pinning */
+    overflow: hidden;
 }
 
 .works-title {
-    width: 100%;
-    padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: end;
+    width: 320vw;
+    /* ✅ Total width of content */
+    height: 100%;
+    will-change: transform;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .works-title h1 {
@@ -63,8 +64,7 @@
     transition: clip-path 1s ease-in-out;
 }
 
-.screw-img-container:hover {
-}
+.screw-img-container:hover {}
 
 .hover-img-content {
     display: flex;

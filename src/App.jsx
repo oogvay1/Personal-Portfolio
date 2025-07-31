@@ -20,6 +20,16 @@ import gsap from "gsap";
 
 function App() {
 
+  const [loadingComplete, setLoadingComplete] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const [isClick, setIsClick] = useState(false);
+
+  const sticky = useRef(null);
+  const about = useRef(null);
+  const btn = useRef(null);
+  const imgList = useRef([]);
+  const main = useRef(null);
+  const mainContent = useRef(null);
 
   useEffect(() => {
 
@@ -38,31 +48,30 @@ function App() {
 
     requestAnimationFrame(raf)
 
-    return () => lenis.destroy()
-  }, [])
-
-  const [loadingComplete, setLoadingComplete] = useState(false);
-  const [isHover, setIsHover] = useState(false);
-  const [isClick, setIsClick] = useState(false);
-
-  const sticky = useRef(null);
-  const about = useRef(null);
-  const btn = useRef(null);
-  const imgList = useRef([]);
-  const main = useRef(null);
-  const mainContent = useRef(null);
+    if (isClick) {
+      lenis.stop()
+    } else {
+      lenis.start()
+    }
+    return () => lenis.destroy();
+  }, [isClick]);
 
   useEffect(() => {
     if (isClick) {
+
       gsap.to(mainContent.current, {
         y: "100svh",
         duration: 2,
+        borderRadius: "40px",
         ease: "power4.inOut"
       });
+
     } else {
+
       gsap.to(mainContent.current, {
         y: "0svh",
         duration: 2,
+        borderRadius: "0px",
         ease: "power4.inOut"
       });
     }

@@ -94,7 +94,12 @@ const Header = forwardRef(function Header(props, ref) {
                             </div>
                         </Magnetic>
 
-                        <p>twitter</p>
+                        <ul>
+                            <li><a>twitter</a></li>
+                            <li><a>dribble</a></li>
+                            <li><a>behance</a></li>
+                            <li><a>dribble</a></li>
+                        </ul>
 
                         <div className="header-menu">
                             <Framer>
