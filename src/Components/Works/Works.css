@@ -1,92 +1,20 @@
+.works {
+    background-color: red;
+    height: 1400vh;
+}
+
 .works-container {
     height: 100vh;
-    width: 320vw;
-    position: relative;
-    /* ✅ Needed for pinning */
-    overflow: hidden;
-}
-
-.works-title {
+    position: sticky;
+    top: 0;
     display: flex;
-    width: 320vw;
-    /* ✅ Total width of content */
-    height: 100%;
-    will-change: transform;
-    align-items: center;
     justify-content: flex-start;
-}
-
-.works-title h1 {
-    height: 295px;
-    font-size: 300px;
-    font-weight: 800;
-}
-
-.works-title h1::selection {
-    background-color: #fff;
-    color: black;
-}
-
-.works-title span {
-    font-size: 100px;
-}
-
-.works-imgs img {
-    display: block;
-    transform-origin: center;
-    width: 820px;
-    z-index: 999;
-}
-
-.screw-img-container {
-    display: block;
-    will-change: transform;
-    transform-origin: center;
-    width: 800px;
-    height: 450px;
-    z-index: 999;
-    margin: 0 auto;
-}
-
-.work-container {
-    display: flex;
-    flex-wrap: nowrap;
     align-items: center;
-    justify-content: center;
 }
 
-.screw-img-container {
-    width: 820px;
-    height: 480px;
-    gap: 14px;
-    justify-content: space-between;
-    flex-direction: column;
-    transition: clip-path 1s ease-in-out;
-}
-
-.screw-img-container:hover {}
-
-.hover-img-content {
+.work-imgs-container {
     display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.screw-l {
-    margin-top: 200px;
-    width: 580px;
-    height: 420px;
-    overflow: hidden;
-    display: flex;
-    gap: 14px;
-    flex-direction: column;
-    margin: 65px 65px 200px 65px;
-    transform: translateY(200px);
-    justify-content: center;
-}
-
-.project-date {
-    display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
+    gap: 20px;
 }

@@ -37,6 +37,12 @@ a {
     width: 100%;
 }
 
+#main {
+    position: relative;
+    will-change: transform;
+}
+
+
 .circa-text-container {
     position: absolute;
     height: 100vh;
@@ -76,21 +82,6 @@ a {
 
 .screw-img-container:hover .cursor {
     scale: 4;
-}
-
-.work-section {
-    height: 3700px;
-    display: flex;
-    align-items: center;
-}
-
-main {
-    overflow: hidden;
-    will-change: transform;
-}
-
-.main-content {
-    will-change: transform;
 }
 
 @media screen and (max-width: 1600px) {
