@@ -38,6 +38,7 @@ const Works = forwardRef(function Works(props, ref) {
                 const container = document.getElementById("trigger");
                 const maxScroll = container.offsetWidth + 4000;
                 const scrollSpeedFactor = 0.68;
+                console.log(self.progress)
 
                 gsap.to(container, {
                     x: -self.progress * maxScroll * scrollSpeedFactor,
@@ -47,9 +48,6 @@ const Works = forwardRef(function Works(props, ref) {
             }
         });
     }, []);
-
-
-    scroll();
 
     return (
         <>

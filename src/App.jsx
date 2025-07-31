@@ -16,8 +16,10 @@ import Works from "./Components/Works/Works";
 import MyGoal from "./Components/MyGoal/MyGoal";
 import Marquee from "./Components/Marquee/Marquee";
 import Slider from "./Components/Slider/Slider";
+import gsap from "gsap";
 
 function App() {
+
 
   useEffect(() => {
 
@@ -47,33 +49,55 @@ function App() {
   const about = useRef(null);
   const btn = useRef(null);
   const imgList = useRef([]);
+  const main = useRef(null);
+  const mainContent = useRef(null);
+
+  useEffect(() => {
+    if (isClick) {
+      gsap.to(mainContent.current, {
+        y: "100svh",
+        duration: 2,
+        ease: "power4.inOut"
+      });
+    } else {
+      gsap.to(mainContent.current, {
+        y: "0svh",
+        duration: 2,
+        ease: "power4.inOut"
+      });
+    }
+  }, [isClick]);
+
 
   return (
     <>
       {loadingComplete && <Cursor sticky={sticky} about={about} img={imgList} />}
 
-      <main>
-        <section className="hero-section">
-          <Spline />
-          <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
-          {/* <Creative /> */}
-          <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
-          {/* <Marquee /> */}
-        </section>
+      <main ref={main}>
+        <div className="main-content" ref={mainContent}>
+          <section className="hero-section">
+            <Spline />
+            <BackgroundText isComplete={loadingComplete} text="AZIMBEK" />
+            {/* <Creative /> */}
+            <SideText completed={loadingComplete} ref={about} hover={isHover} setHover={setIsHover} />
+            {/* <Marquee /> */}
+          </section>
 
-        <section className="about-section">
-          <About />
-        </section>
+          <section className="about-section">
+            <About />
+          </section>
 
-        <section className="work-section">
-          <Works ref={imgList} />
-        </section>
+          <section className="work-section">
+            <Works ref={imgList} />
 
-        <section>
-          <MyGoal />
-        </section>
+          </section>
 
+          <section>
+            <MyGoal />
+          </section>
+        </div>
       </main>
+
       <Header isComplete={loadingComplete} ref={sticky} isClick={isClick} setClick={setIsClick} />
       <div className="div"></div>
       <Landing isComplete={loadingComplete} setIsComplete={setLoadingComplete} />

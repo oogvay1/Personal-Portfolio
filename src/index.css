@@ -17,13 +17,14 @@
 }
 
 body {
-    background-color: #F3F3F3;
     overflow: hidden;
     height: 10000px;
+    background-color: #F3F3F3;
 }
 
 html {
     cursor: none;
+    background-color: #F3F3F3;
 }
 
 a {
@@ -69,7 +70,7 @@ a {
     padding-bottom: 1000px;
 }
 
-.menu-lines[data-line="true"] ~ .navigation {
+.menu-lines[data-line="true"]~.navigation {
     z-index: -1;
 }
 
@@ -81,6 +82,14 @@ a {
     height: 3700px;
     display: flex;
     align-items: center;
+}
+
+main {
+    overflow: hidden;
+}
+
+.main-content {
+    will-change: transform;
 }
 
 @media screen and (max-width: 1600px) {

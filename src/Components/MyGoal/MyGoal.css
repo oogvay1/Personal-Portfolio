@@ -11,8 +11,6 @@
 }
 
 .my-goal {
-    width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,6 +21,8 @@
 
 .mask,
 .main-text-mask {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;

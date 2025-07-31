@@ -205,112 +205,128 @@ function Navigation({ isClick }) {
 
     useEffect(() => {
         if (isClick) {
-            gsap.killTweensOf(main.current);
-
-            gsap.set(main.current, {
-                y: -1050,
-                height: 640,
-                display: "block"
-            });
-
             gsap.to(main.current, {
-                y: -7,
-                height: 1820,
-                duration: 3,
-                ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.178,0.285 0.33,0.318 0.512,0.325 0.522,0.319 0.57,0.35 0.673,0.418 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
+                height: "100vh",
+                duration: 2,
+                ease: "power4.inOut"
             });
-
-            animate(follow, 2.8);
-            animate(follow2, 2.4);
-
-            spanRef.current.forEach(el => {
-                gsap.killTweensOf(el);
-
-                gsap.to(el, {
-                    y: 0,
-                    duration: 1,
-                    delay: 2,
-                    ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
-                });
-            });
-
-
-            timeRef.current.forEach(el => {
-                gsap.set(el, {
-                    opacity: 0,
-                    y: 32
-                })
-
-                gsap.to(el, {
-                    opacity: 1,
-                    y: -5,
-                    duration: 1,
-                    delay: 2.3,
-                    ease: "power4.inOut"
-                });
-            });
-
         } else {
-            gsap.killTweensOf(main.current);
-            gsap.killTweensOf(follow.current);
-            gsap.killTweensOf(follow2.current);
-
             gsap.to(main.current, {
-                y: -1050,
-                height: 500,
-                duration: 1.7,
-                delay: 0.5,
-                ease: "power4.inOut",
-                onComplete: () => {
-                    gsap.set(main.current, { display: "none" });
-                }
+                height: "0vh",
+                duration: 2,
+                ease: "power4.inOut"
             });
-
-            spanRef.current.forEach(el => {
-                gsap.killTweensOf(el);
-
-                gsap.to(el, {
-                    y: 122,
-                    duration: 1,
-                    ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
-                });
-            });
-
-            gsap.to(follow.current, {
-                y: -1050,
-                height: 500,
-                duration: 1.7,
-                delay: 0.5,
-                ease: "power4.inOut",
-                onComplete: () => {
-                    gsap.set(follow.current, { display: "none" });
-                }
-            });
-
-            gsap.to(follow2.current, {
-                y: -1050,
-                height: 500,
-                duration: 1.7,
-                delay: 0.6,
-                ease: "power4.inOut",
-                onComplete: () => {
-                    gsap.set(follow2.current, { display: "none" });
-                }
-            });
-
-            timeRef.current.forEach(el => {
-                gsap.to(el, {
-                    opacity: 0,
-                    duration: 1
-                })
-            })
         }
-    }, [isClick]);
+    }, [isClick])
+
+    // useEffect(() => {
+    //     if (isClick) {
+    //         gsap.killTweensOf(main.current);
+
+    //         gsap.set(main.current, {
+    //             y: -1050,
+    //             height: 640,
+    //             display: "block"
+    //         });
+
+    //         gsap.to(main.current, {
+    //             y: -7,
+    //             height: 1820,
+    //             duration: 3,
+    //             ease: CustomEase.create("custom", "M0,0 C0.024,0 0.118,-0.021 0.173,0.158 0.173,0.158 0.178,0.285 0.33,0.318 0.512,0.325 0.522,0.319 0.57,0.35 0.673,0.418 0.657,0.534 0.673,0.699 0.699,0.944 0.828,0.994 0.905,0.995 0.957,0.996 0.998,1.001 1,1.002")
+    //         });
+
+    //         animate(follow, 2.8);
+    //         animate(follow2, 2.4);
+
+    //         spanRef.current.forEach(el => {
+    //             gsap.killTweensOf(el);
+
+    //             gsap.to(el, {
+    //                 y: 0,
+    //                 duration: 1,
+    //                 delay: 2,
+    //                 ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
+    //             });
+    //         });
+
+
+    //         timeRef.current.forEach(el => {
+    //             gsap.set(el, {
+    //                 opacity: 0,
+    //                 y: 32
+    //             })
+
+    //             gsap.to(el, {
+    //                 opacity: 1,
+    //                 y: -5,
+    //                 duration: 1,
+    //                 delay: 2.3,
+    //                 ease: "power4.inOut"
+    //             });
+    //         });
+
+    //     } else {
+    //         gsap.killTweensOf(main.current);
+    //         gsap.killTweensOf(follow.current);
+    //         gsap.killTweensOf(follow2.current);
+
+    //         gsap.to(main.current, {
+    //             y: -1050,
+    //             height: 500,
+    //             duration: 1.7,
+    //             delay: 0.5,
+    //             ease: "power4.inOut",
+    //             onComplete: () => {
+    //                 gsap.set(main.current, { display: "none" });
+    //             }
+    //         });
+
+    //         spanRef.current.forEach(el => {
+    //             gsap.killTweensOf(el);
+
+    //             gsap.to(el, {
+    //                 y: 122,
+    //                 duration: 1,
+    //                 ease: CustomEase.create("custom", "M0,0 C0.171,0 0.234,0.071 0.234,0.071 0.375,0.174 0.39,0.113 0.516,0.342 0.595,0.508 0.621,0.865 0.768,0.96 0.837,1.015 0.959,1 1,1")
+    //             });
+    //         });
+
+    //         gsap.to(follow.current, {
+    //             y: -1050,
+    //             height: 500,
+    //             duration: 1.7,
+    //             delay: 0.5,
+    //             ease: "power4.inOut",
+    //             onComplete: () => {
+    //                 gsap.set(follow.current, { display: "none" });
+    //             }
+    //         });
+
+    //         gsap.to(follow2.current, {
+    //             y: -1050,
+    //             height: 500,
+    //             duration: 1.7,
+    //             delay: 0.6,
+    //             ease: "power4.inOut",
+    //             onComplete: () => {
+    //                 gsap.set(follow2.current, { display: "none" });
+    //             }
+    //         });
+
+    //         timeRef.current.forEach(el => {
+    //             gsap.to(el, {
+    //                 opacity: 0,
+    //                 duration: 1
+    //             })
+    //         })
+    //     }
+    // }, [isClick]);
 
     return (
         <>
-            <div ref={follow} className="nav-follow"></div>
-            <div ref={follow2} className="nav-follow1"></div>
+            {/* <div ref={follow} className="nav-follow"></div>
+            <div ref={follow2} className="nav-follow1"></div> */}
 
             <div ref={main} className="navigation">
                 <div className="nav-text">
