@@ -10,7 +10,7 @@ const Works = forwardRef(function Works(props, ref) {
     const main = useRef(null);
     const { scrollYProgress } = useScroll({ target: main })
 
-    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"])
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55%"]);
 
     return (
         <>
