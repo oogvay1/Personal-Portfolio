@@ -96,19 +96,17 @@ const CircularText = ({
                 onMouseEnter={handleHoverStart}
                 onMouseLeave={handleHoverEnd}
             >
-                {letters.map((letter, i) => {
-                    const rotationDeg = (360 / letters.length) * i;
+                {letters.map((letter, index) => {
+                    const rotationDeg = (360 / letters.length) * index;
                     const factor = Math.PI / letters.length;
-                    const x = factor * i;
-                    const y = factor * i;
+                    const x = factor * index;
+                    const y = factor * index;
                     const transform = `rotateZ(${rotationDeg}deg) translate3d(${x}px, ${y}px, 0)`;
 
                     return (
-                        <>
-                            <span className="spannn" key={i} style={{ transform, WebkitTransform: transform, color: isHover ? "black" : "white" }}>
-                                <p>{letter}</p>
-                            </span>
-                        </>
+                        <span className="spannn" key={index} style={{ transform, WebkitTransform: transform, color: isHover ? "black" : "white" }}>
+                            <p>{letter}</p>
+                        </span>
                     );
                 })}
             </motion.div>

@@ -31,6 +31,10 @@ const Works = forwardRef(function Works(props, ref) {
 
                     <motion.div className="work-imgs-container" style={{ x }} >
 
+                        <div className="works-text-container">
+                             
+                        </div>
+
                         {projects.map((project, index) => (
                             <div key={index} className="screw-img-container">
                                 <div
@@ -39,7 +43,7 @@ const Works = forwardRef(function Works(props, ref) {
                                     }}
                                     className="hover-img-content"
                                 >
-                                    <Screw src={`src/assets/Project${index + 1}.png`} />
+                                    <Screw src={project.src} />
                                     <div className="project-date">
                                         <p>{project.name}</p>
                                         <p>{project.date}</p>

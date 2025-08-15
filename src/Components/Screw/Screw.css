@@ -2,7 +2,7 @@
     display: block;
     will-change: transform;
     transform-origin: center;
-    width: 820px;
+    width: 800px;
     height: 450px;
     z-index: 999;
 }

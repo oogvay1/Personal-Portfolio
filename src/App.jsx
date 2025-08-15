@@ -5,6 +5,7 @@ import Spline from './Components/Spline/Spline'
 import Lenis from "lenis";
 import Rotate from './Components/Rotate/Rotate'
 import BackgroundText from "./Components/BackgroundText";
+import { Canvas } from "@react-three/fiber";
 import Landing from "./Components/Landing/Landing";
 import SideText from "./Components/SideText/SideText";
 import Navigation from "./Components/Navigation/Navigation";
@@ -17,6 +18,10 @@ import MyGoal from "./Components/MyGoal/MyGoal";
 import Marquee from "./Components/Marquee/Marquee";
 import Slider from "./Components/Slider/Slider";
 import gsap from "gsap";
+import Wave from "./Components/Wave";
+import WaveWithText from "./Components/Wave";
+import WaveBackground from "./Components/Wave";
+import WhiteWave from "./Components/Wave";
 
 function App() {
 
@@ -102,6 +107,16 @@ function App() {
         <section>
           <MyGoal />
         </section>
+
+        <div className="divvvv">
+          <Canvas style={{ width: '100vw', height: '100vh', zIndex: 9999 }}>
+            <Wave />
+          </Canvas>
+          <h1 style={{fontSize: 200, marginTop: -290, color: "red", zIndex: -9999}}>salom</h1>
+        </div>
+
+        <div className="divvvv"></div>
+
       </main >
 
       <Header isComplete={loadingComplete} ref={sticky} isClick={isClick} setClick={setIsClick} />

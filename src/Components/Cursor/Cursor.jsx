@@ -159,7 +159,7 @@ export function Cursor({ sticky, about, hover, img }) {
                         isHover={imgHover}
                         className='rotatee'
                     />
-                    <i class="ri-arrow-right-line rotate-arrow"></i>
+                    <i className="ri-arrow-right-line rotate-arrow"></i>
 
                 </motion.div>
             </div>
